@@ -1,0 +1,14 @@
+AD Lab Source ISOs
+ISO/*
+Mount/*
+WIM/*/*wim
+WIM/*/*clg
+Builds/*/DVD
+Builds/*/boot
+Builds/*/efi
+Builds/*/sources
+Builds/*/support
+Builds/*/autorun.inf
+Builds/*/bootmgr
+Builds/*/bootmgr.efi
+Builds/*/setup.exe
