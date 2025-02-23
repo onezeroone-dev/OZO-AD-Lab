@@ -52,8 +52,17 @@ mount -o loop $SOURCE_ISO_PATH $MNT_PATH/ >/dev/null 2>&1
 rsync -av $MNT_PATH/ $COPY_PATH/ >/dev/null 2>&1
 # Unmount the ISO
 umount $MNT_PATH >/dev/null 2>&1
-#### Copy in the Kickstart
-#### Modify the ISOLinux and Grub boot menu entries
+# Copy in the Kickstart
+cp $KICKSTART_PATH $COPY_PATH/
+# Modify the grub boot menu entries
+sed -i '0,/\}/!{0,/\}/!d}' ~/ozo-ad-lab/router/EFI/BOOT/grub.cfg
+sed -i 's/set default="1"/set default="0"/' ~/ozo-ad-lab/router/EFI/BOOT/grub.cfg
+sed -i 's/set timeout=60/set timeout=0/' ~/ozo-ad-lab/router/EFI/BOOT/grub.cfg
+sed -i 's/.*linuxefi.*/& ip=eth0:dhcp inst.text inst.ks=cdrom:\/ozo-ad-lab-router-ks.cfg/g' $COPY_PATH/EFI/BOOT/grub.cfg
+# Modify the isolinux boot menu entries
+sed -i '0,/append/!d' ~/ozo-ad-lab/router/isolinux/isolinux.cfg
+sed -i 's/timeout 600/timeout 0/' ~/ozo-ad-lab/router/isolinux/isolinux.cfg
+sed -i 's/.*append.*/& ip=eth0:dhcp inst.text inst.ks=cdrom:\/ozo-ad-lab-router-ks.cfg/g' ~/ozo-ad-lab/router/isolinux/isolinux.cfg
 # Create the modified ISO
 mkisofs -b isolinux/isolinux.bin -J -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/ >/dev/null 2>&1
 # Make the ISO writable to USB
@@ -71,6 +80,4 @@ else
     echo "FALSE"
 fi
 
-# >/dev/null 2>&1
-# wsl --distribution "Debian" --user root SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/AlmaLinux-9.5-x86_64-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="AlmaLinux-9-5-x86_64-dvd" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
-
+# wsl --distribution "Debian" --user root KICKSTART_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-ks.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/AlmaLinux-9.5-x86_64-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="AlmaLinux-9-5-x86_64-dvd" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
