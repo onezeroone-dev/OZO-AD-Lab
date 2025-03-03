@@ -9,6 +9,9 @@ Start-Transcript -Path "C:\ProgramData\AD Lab\transcript.txt"
 Install-Module NTFSSecurity -Force
 Import-Module NTFSSecurity
 
+## Create folder
+New-Item -ItemType Directory -Path $sharePath
+
 ## PERMISSIONS
 # NTFS permissions; set local filesystem ACLs
 # Set local filesystem ACLs
@@ -21,6 +24,7 @@ Remove-NTFSAccess -Path $sharePath -Account "BUILTIN\Users" -AccessRights ReadAn
 Add-NTFSAccess -Path $sharePath -Account "CONTOSO\Domain Users" -AccessRights "ReadAndExecute" -AccessType "Allow" -AppliesTo "ThisFolderOnly"
 Add-NTFSAccess -Path $sharePath -Account "CONTOSO\All Shares Full Control" -AccessRights "FullControl" -AccessType "Allow" -AppliesTo "ThisFolderSubfoldersAndFiles"
 ForEach ($unit in $units) {
+    New-Item -ItemType Directory -Path "$sharePath\$unit"
     Add-NTFSAccess -Path "$sharePath\$unit" -Account "CONTOSO\$unit Share Modify" -AccessRights "Modify" -AccessType "Allow" -AppliesTo "ThisFolderSubfoldersAndFiles"
     Add-NTFSAccess -Path "$sharePath\$unit" -Account "CONTOSO\$unit Share Read" -AccessRights "ReadAndExecute" -AccessType "Allow" -AppliesTo "ThisFolderSubfoldersAndFiles"
 }
