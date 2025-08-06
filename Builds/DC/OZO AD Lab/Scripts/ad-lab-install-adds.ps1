@@ -1,9 +1,9 @@
 # Declare variables
-[SecureString] $encryptedLabPassword = (ConvertTo-SecureString -AsPlainText -String 'ADL@b$ecurePassw0rd' -Force)
+[SecureString] $encryptedLabPassword = (ConvertTo-SecureString -AsPlainText -String 'OZOADL@b$ecurePassw0rd' -Force)
 
-If ((Test-Path -Path "C:\ProgramData\AD Lab\transcript.txt") -eq $false) {
+If ((Test-Path -Path "C:\ProgramData\OZO AD Lab\transcript.txt") -eq $false) {
     # Start transcript
-    Start-Transcript -Path "C:\ProgramData\AD Lab\transcript.txt"
+    Start-Transcript -Path "C:\ProgramData\OZO AD Lab\transcript.txt"
     # Import modules
     Import-Module ADDSDeployment
     # Set local Administrator password

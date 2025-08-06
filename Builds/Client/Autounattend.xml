@@ -93,6 +93,21 @@
                     <Path>reg add &quot;HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff&quot; /f</Path>
                     <Description>Disabling new network window</Description>
                 </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>2</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;OZO&apos;,&apos;OZOAD&apos;,&apos;OZOFiles&apos;,&apos;OZOLogger&apos;,&apos;OZOStrings&apos; -Force}&quot;</Path>
+                    <Description>Installing OZO PowerShell modules</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>3</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;ozo-ad-manage-delegations&apos;,&apos;ozo-windows-event-log-provider-setup&apos; -Force}&quot;</Path>
+                    <Description>Installing OZO PowerShell scripts</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>4</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -File &quot;C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1&quot;</Path>
+                    <Description>Executing OZO Windows Event Log Provider Setup</Description>
+                </RunSynchronousCommand>
             </RunSynchronous>
         </component>
         <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -114,7 +129,7 @@
             <Identification>
                 <Credentials>
                     <Domain>contoso.com</Domain>
-                    <Password>ADL@b$ecurePassw0rd</Password>
+                    <Password>OZOADL@b$ecurePassw0rd</Password>
                     <Username>Administrator</Username>
                 </Credentials>
                 <UnsecureJoin>false</UnsecureJoin>
@@ -143,8 +158,8 @@
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>QQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
-                            <PlainText>false</PlainText>
+                            <Value>OZOADL@b$ecurePassw0rd</Value>
+                            <PlainText>true</PlainText>
                         </Password>
                         <Description>Built-in account for administering the computer/domain</Description>
                         <DisplayName>Administrator</DisplayName>
@@ -155,5 +170,5 @@
             </UserAccounts>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim:c:/ad-lab/wim/windows%2011%20enterprise/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim:c:/ozo-ad-lab/wim/windows%2011%20enterprise/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>

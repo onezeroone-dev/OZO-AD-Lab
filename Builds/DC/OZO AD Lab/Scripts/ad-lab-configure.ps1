@@ -1,9 +1,7 @@
 ## VARIABLES
 [String]         $DC     = "DC=contoso,DC=com"
-[Array]          $OUs    = @("Groups","Servers","Workstations","Service Accounts","People")
 [Array]          $units  = @("Administration","IT","Development","Finance","Human Resources","Marketing","Operations")
-[PSCustomObject] $users  = (Import-Csv -Path "C:\ProgramData\AD Lab\ad-lab-users.csv")
-[PSCustomObject] $groups = (Import-Csv -Path "C:\ProgramData\AD Lab\ad-lab-groups.csv")
+[Json]           $Configuration = (Get-Content -Path "C:\ProgramData\OZO AD Lab\ad-lab-configure.json" | ConvertFrom-Json)
 ## START TRANSCRIPT
 Start-Transcript -Append -Path "C:\ProgramData\AD Lab\transcript.txt"
 
@@ -26,10 +24,8 @@ Restart-Service dhcpserver
 New-DfsnRoot 
 #### ORGANIZATIONAL UNITS
 # Create additional top-level OUs
-New-ADOrganizationalUnit -Name "Domain Groups" -Path $DC
-New-ADOrganizationalUnit -Name "Domain Users" -Path $DC
-ForEach ($ou in $OUs) {
-    New-ADOrganizationalUnit -Name $ou -Path $DC
+ForEach ($OU in $Configuration.ADOrganizationalUnits) {
+    New-ADOrganizationalUnit -Name $OU.Name -Path $OU.Path
 }
 # Create additional second-level OUs
 ForEach ($unit in $units) {
