@@ -1,11 +1,25 @@
 {
-    "OUDelegations":[
+    "ADContacts":[
+        {
+            "FirstName":"",
+            "LastName":"",
+            "EmailAddress":"",
+            "PhoneNumber":""
+        }
+    ],
+    "ADComputers":[
+        {
+            "ComputerName":"",
+            "Path":""
+        }
+    ],
+    "ADOUDelegations":[
 
     ],
-    "DFSNRootPermissions":[
+    "ADDFSNRootPermissions":[
 
     ],
-    "DFSNFolderPermissions":[
+    "ADDFSNFolderPermissions":[
 
     ],
     "ADGroups":[
