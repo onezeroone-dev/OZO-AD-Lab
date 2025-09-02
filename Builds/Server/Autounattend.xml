@@ -140,26 +140,31 @@
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Order>8</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;OZO&apos;,&apos;OZOAD&apos;,&apos;OZOFiles&apos;,&apos;OZOLogger&apos;,&apos;OZOStrings&apos; -Force}&quot;</Path>
-                    <Description>Installing OZO PowerShell modules</Description>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature -Name &apos;RSAT-ADDS&apos;,&apos;RSAT-ADLDS&apos;}&quot;</Path>
+                    <Description>Installing the Remote Server Administration Tools (RSAT-ADDS and RSAT-ADLDS)</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Order>9</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module &apos;OZO&apos;,&apos;OZOAD&apos;,&apos;OZOFiles&apos;,&apos;OZOLogger&apos;,&apos;OZOStrings&apos; -Force}&quot;</Path>
+                    <Description>Installing OZO PowerShell modules</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>10</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;ozo-ad-manage-delegations&apos;,&apos;ozo-windows-event-log-provider-setup&apos; -Force}&quot;</Path>
                     <Description>Installing OZO PowerShell scripts</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>10</Order>
+                    <Order>11</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -File &quot;C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1&quot;</Path>
                     <Description>Executing OZO Windows Event Log Provider Setup</Description>
                 </RunSynchronousCommand>
-                <RunSynchronousCommand>
-                    <Order>11</Order>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>12</Order>
                     <Path>powershell.exe -ExecutionPolicy ByPass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\ProgramData&apos;}&quot;</Path>
                     <Description>Copying Script files</Description>
                 </RunSynchronousCommand>
-                <RunSynchronousCommand>
-                    <Order>12</Order>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>13</Order>
                     <Path>powershell.exe -ExecutionPolicy ByPass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\Share&apos; -Destination &apos;C:\&apos;}&quot;</Path>
                     <Description>Copying Share files</Description>
                 </RunSynchronousCommand>

@@ -175,8 +175,8 @@
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Order>16</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\ProgramData&apos;}&quot;</Path>
-                    <Description>Copying OZO AD Lab files</Description>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\Windows\Sysvol\sysvol\Scripts&apos;}&quot;</Path>
+                    <Description>Copying OZO AD Lab files to NETLOGON</Description>
                 </RunSynchronousCommand>
             </RunSynchronous>
         </component>
