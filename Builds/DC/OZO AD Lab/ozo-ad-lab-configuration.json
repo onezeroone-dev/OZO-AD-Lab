@@ -3,9 +3,9 @@
         {
             "FirstName":"William",
             "LastName":"Gates",
-            "EmailAddress":"wgates@microsoft.com",
+            "EmailAddress":"wgates@contoso.com",
             "Path":"OU=External Contacts,DC=contoso,DC=com",
-            "TelephoneNumber":"+1-206-555-"
+            "TelephoneNumber":"+1-206-555-6738"
         }
     ],
     "ADComputers":[
