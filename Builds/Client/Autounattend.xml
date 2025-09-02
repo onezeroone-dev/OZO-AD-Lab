@@ -90,28 +90,28 @@
             <RunSynchronous>
                 <RunSynchronousCommand wcm:action="add">
                     <Order>1</Order>
+                    <Path>reg add &quot;HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff&quot; /f</Path>
+                    <Description>Disabling new network window</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>2</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}&quot;</Path>
                     <Description>Installing Remote Server Administration Tools (RSAT)</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>2</Order>
+                    <Order>3</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module &apos;OZO&apos;,&apos;OZOAD&apos;,&apos;OZOFiles&apos;,&apos;OZOLogger&apos;,&apos;OZOStrings&apos; -Force}&quot;</Path>
                     <Description>Installing OZO PowerShell modules</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>3</Order>
+                    <Order>4</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;ozo-windows-event-log-provider-setup&apos; -Force}&quot;</Path>
                     <Description>Installing OZO PowerShell scripts</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>4</Order>
+                    <Order>5</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -File &quot;C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1&quot;</Path>
                     <Description>Executing OZO Windows Event Log Provider Setup</Description>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Order>5</Order>
-                    <Path>reg add &quot;HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff&quot; /f</Path>
-                    <Description>Disabling new network window</Description>
                 </RunSynchronousCommand>
             </RunSynchronous>
         </component>
