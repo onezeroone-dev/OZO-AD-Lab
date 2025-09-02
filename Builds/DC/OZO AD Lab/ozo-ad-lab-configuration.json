@@ -1,18 +1,27 @@
 {
     "ADContacts":[
         {
-            "FirstName":"",
-            "LastName":"",
-            "EmailAddress":"",
-            "PhoneNumber":""
+            "FirstName":"William",
+            "LastName":"Gates",
+            "EmailAddress":"wgates@microsoft.com",
+            "Path":"OU=External Contacts,DC=contoso,DC=com",
+            "TelephoneNumber":"+1-206-555-"
         }
     ],
     "ADComputers":[
         {
-            "ComputerName":"",
-            "Path":""
-        }
+            "ComputerName":"client",
+            "Path":"OU=IT,OU=Workstations,DC=contoso,DC=com"
+        },
+        {
+            "ComputerName":"server",
+            "Path":"OU=IT,OU=Servers,DC=contoso,DC=com"
+        }       
     ],
+    "ADDefaultObjectsOUs":{
+        "Groups":"OU=Domain Groups,DC=contoso,DC=com",
+        "Users":"OU=Domain Users,DC=contoso,DC=com"
+    },
     "ADOUDelegations":[
 
     ],
@@ -24,706 +33,735 @@
     ],
     "ADGroups":[
         {
-            "Name":"Administration AD Delegates",
-            "Path":"OU=Administration,OU=Groups,DC=contoso,DC=com",
+            "Name":"All DFS Delegates",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "mmartinez"
-                ,"phardy"
-            ]
+            "Groups":[]
+        },
+        {
+            "Name":"All GPO Delegates",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All Groups Delegates",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All People Delegates",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All Servers Delegates",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All Servers Local Administrators",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All Service Accounts Delegates",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All Shares Full Control",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All Workstations Delegates",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
+        },
+        {
+            "Name":"All Workstations Local Administrators",
+            "Path":"OU=Domain Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[]
         },
         {
             "Name":"Administration Servers Local Administrators",
             "Path":"OU=Administration,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "mmartinez",
-                "phardy"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration Share Modify",
             "Path":"OU=Administration,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "msantos",
-                "gkaplan",
-                "bwalter"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration Share Read",
             "Path":"OU=Administration,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[]
+            "Groups":[]
         },
         {
             "Name":"Administration Workstations Local Administrators",
             "Path":"OU=Administration,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "drichards"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration GPO Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Administration AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration Groups Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Administration AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration People Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Administration AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration Servers Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Administration AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration Service Accounts Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Administration AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Administration Workstations Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Administration AD Delegates"
-            ]
+            "Groups":[]
         },
         {
-            "Name":"Development AD Delegates",
-            "Path":"OU=Development,OU=Groups,DC=contoso,DC=com",
+            "Name":"Administration AD Delegates",
+            "Path":"OU=Administration,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "rcasey"
+            "Groups":[
+                "Administration GPO Delegates",
+                "Administration Groups Delegates",
+                "Administration People Delegates",
+                "Administration Servers Delegates",
+                "Administration Service Accounts Delegates",
+                "Administration Workstations Delegates"
             ]
         },
         {
             "Name":"Development Servers Local Administrators",
             "Path":"OU=Development,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "rcasey"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development Share Modify",
             "Path":"OU=Development,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "nsawyer",
-                "jburton",
-                "rcasey"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development Share Read",
             "Path":"OU=Development,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[]
+            "Groups":[]
         },
         {
             "Name":"Development Workstations Local Administrators",
             "Path":"OU=Development,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "rcasey"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development GPO Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Development AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development Groups Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Development AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development People Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Development AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development Servers Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Development AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development Service Accounts Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Development AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Development Workstations Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Development AD Delegates"
-            ]
+            "Groups":[]
         },
         {
-            "Name":"Finance AD Delegates",
-            "Path":"OU=Finance,OU=Groups,DC=contoso,DC=com",
+            "Name":"Development AD Delegates",
+            "Path":"OU=Development,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "dgillespie"
+            "Groups":[
+                "Development GPO Delegates",
+                "Development Groups Delegates",
+                "Development People Delegates",
+                "Development Servers Delegates",
+                "Development Service Accounts Delegates",
+                "Development Workstations Delegates"
             ]
         },
         {
             "Name":"Finance Servers Local Administrators",
             "Path":"OU=Finance,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "dgillespie"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance Share Modify",
             "Path":"OU=Finance,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "mlynch",
-                "jweber",
-                "dgillespie"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance Share Read",
             "Path":"OU=Finance,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[]
+            "Groups":[]
         },
         {
             "Name":"Finance Workstations Local Administrators",
             "Path":"OU=Finance,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "dgillespie"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance GPO Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Finance AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance Groups Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Finance AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance People Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Finance AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance Servers Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Finance AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance Service Accounts Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Finance AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Finance Workstations Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Finance AD Delegates"
-            ]
+            "Groups":[]
         },
         {
-            "Name":"Human Resources AD Delegates",
-            "Path":"OU=Human Resources,OU=Groups,DC=contoso,DC=com",
+            "Name":"Finance AD Delegates",
+            "Path":"OU=Finance,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "ecase"
+            "Groups":[
+                "Finance GPO Delegates",
+                "Finance Groups Delegates",
+                "Finance People Delegates",
+                "Finance Servers Delegates",
+                "Finance Service Accounts Delegates",
+                "Finance Workstations Delegates"
             ]
         },
         {
             "Name":"Human Resources Servers Local Administrators",
             "Path":"OU=Human Resources,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "ecase"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources Share Modify",
             "Path":"OU=Human Resources,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "jvelasquez",
-                "fkane",
-                "ecase"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources Share Read",
             "Path":"OU=Human Resources,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[]
+            "Groups":[]
         },
         {
             "Name":"Human Resources Workstations Local Administrators",
             "Path":"OU=Human Resources,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "ecase"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources GPO Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Human Resources AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources Groups Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Human Resources AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources People Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Human Resources AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources Servers Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Human Resources AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources Service Accounts Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Human Resources AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Human Resources Workstations Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Human Resources AD Delegates"
+            "Groups":[]
+        },
+        {
+            "Name":"Human Resources AD Delegates",
+            "Path":"OU=Human Resources,OU=Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[
+                "Human Resources GPO Delegates",
+                "Human Resources Groups Delegates",
+                "Human Resources People Delegates",
+                "Human Resources Servers Delegates",
+                "Human Resources Service Accounts Delegates",
+                "Human Resources Workstations Delegates"
             ]
         },
         {
             "Name":"IT AD Delegates",
             "Path":"OU=IT,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "mmartinez",
-                "phardy"
+            "Groups":[
+                "All DFS Delegates",
+                "All GPO Delegates",
+                "All Groups Delegates",
+                "All People Delegates",
+                "All Servers Delegates",
+                "All Service Accounts Delegates",
+                "All Shares Full Control",
+                "All Workstations Delegates"
             ]
         },
         {
             "Name":"IT Servers Local Administrators",
             "Path":"OU=IT,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "mmartinez",
-                "phardy"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT Share Modify",
             "Path":"OU=IT,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "mmartinez",
-                "phardy",
-                "drichards"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT Share Read",
             "Path":"OU=IT,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[]
+            "Groups":[]
         },
         {
             "Name":"IT Workstations Local Administrators",
             "Path":"OU=IT,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "phardy",
-                "drichards"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT GPO Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "IT AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT Groups Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "IT AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT People Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "IT AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT Servers Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "IT AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT Service Accounts Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "IT AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"IT Workstations Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "IT AD Delegates"
-            ]
+            "Groups":[]
         },
         {
-            "Name":"Marketing AD Delegates",
-            "Path":"OU=Marketing,OU=Groups,DC=contoso,DC=com",
+            "Name":"IT AD Delegates",
+            "Path":"OU=IT,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "dnorton"
+            "Groups":[
+                "IT GPO Delegates",
+                "IT Groups Delegates",
+                "IT People Delegates",
+                "IT Servers Delegates",
+                "IT Service Accounts Delegates",
+                "IT Workstations Delegates"
             ]
         },
         {
             "Name":"Marketing Servers Local Administrators",
             "Path":"OU=Marketing,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "dnorton"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing Share Modify",
             "Path":"OU=Marketing,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "ddurham",
-                "gdaly",
-                "dnorton"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing Share Read",
             "Path":"OU=Marketing,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[]
+            "Groups":[]
         },
         {
             "Name":"Marketing Workstations Local Administrators",
             "Path":"OU=Marketing,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "dnorton"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing GPO Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Marketing AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing Groups Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Marketing AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing People Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Marketing AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing Servers Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Marketing AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing Service Accounts Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Marketing AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Marketing Workstations Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Marketing AD Delegates"
-            ]
+            "Groups":[]
         },
         {
-            "Name":"Operations AD Delegates",
-            "Path":"OU=Operations,OU=Groups,DC=contoso,DC=com",
+            "Name":"Marketing AD Delegates",
+            "Path":"OU=Marketing,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "pcarver"
+            "Groups":[
+                "Marketing GPO Delegates",
+                "Marketing Groups Delegates",
+                "Marketing People Delegates",
+                "Marketing Servers Delegates",
+                "Marketing Service Accounts Delegates",
+                "Marketing Workstations Delegates"
             ]
         },
         {
             "Name":"Operations Servers Local Administrators",
             "Path":"OU=Operations,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "pcarver"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations Share Modify",
             "Path":"OU=Operations,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "ctaylor",
-                "jthomas",
-                "pcarver"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations Share Read",
             "Path":"OU=Operations,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[]
+            "Groups":[]
         },
         {
             "Name":"Operations Workstations Local Administrators",
             "Path":"OU=Operations,OU=Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "pcarver"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations GPO Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Operations AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations Groups Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Operations AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations People Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Operations AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations Servers Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Operations AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations Service Accounts Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Operations AD Delegates"
-            ]
+            "Groups":[]
         },
         {
             "Name":"Operations Workstations Delegates",
             "Path":"OU=Domain Groups,DC=contoso,DC=com",
             "Scope":1,
-            "Members":[
-                "Operations AD Delegates"
+            "Groups":[]
+        },
+        {
+            "Name":"Operations AD Delegates",
+            "Path":"OU=Operations,OU=Groups,DC=contoso,DC=com",
+            "Scope":1,
+            "Groups":[
+                "Operations GPO Delegates",
+                "Operations Groups Delegates",
+                "Operations People Delegates",
+                "Operations Servers Delegates",
+                "Operations Service Accounts Delegates",
+                "Operations Workstations Delegates"
+            ]
+        }
+    ],
+    "ADGroupPolicyObjects":[
+        {
+            "Name":"All People Settings",
+            "Links":[
+                "OU=People,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All DFS Delegates",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"All Servers Settings",
+            "Links":[
+                "OU=Servers,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All GPO Delegates",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"All Workstations Settings",
+            "Links":[
+                "OU=Workstations,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All Groups Delegates",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"Administration People Settings",
+            "Links":[
+                "OU=Administration,OU=People,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All People Delegates",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"Administration Servers Settings",
+            "Links":[
+                "OU=Administration,OU=Servers,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All Servers Delegates",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"Administration Workstations Settings",
+            "Links":[
+                "OU=Administration,OU=Workstations,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All Servers Local Administrators",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "mmartinez",
-                "phardy"
+            "Name":"Development People Settings",
+            "Links":[
+                "OU=Development,OU=People,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All Service Accounts Delegates",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"Development Servers Settings",
+            "Links":[
+                "OU=Development,OU=Servers,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All Shares Full Control",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"Development Workstations Settings",
+            "Links":[
+                "OU=Development,OU=Workstations,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All Workstations Delegates",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "IT AD Delegates"
+            "Name":"Finance People Settings",
+            "Links":[
+                "OU=Finance,OU=People,DC=contoso,DC=com"
             ]
         },
         {
-            "Name":"All Workstations Local Administrators",
-            "Path":"OU=Domain Groups,DC=contoso,DC=com",
-            "Scope":1,
-            "Members":[
-                "mmartinez",
-                "drichards"
+            "Name":"Finance Servers Settings",
+            "Links":[
+                "OU=Finance,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Finance Workstations Settings",
+            "Links":[
+                "OU=Finance,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Human Resources People Settings",
+            "Links":[
+                "OU=Human Resources,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Human Resources Servers Settings",
+            "Links":[
+                "OU=Human Resources,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Human Resources Workstations Settings",
+            "Links":[
+                "OU=Human Resources,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"IT People Settings",
+            "Links":[
+                "OU=IT,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"IT Servers Settings",
+            "Links":[
+                "OU=IT,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"IT Workstations Settings",
+            "Links":[
+                "OU=IT,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Marketing People Settings",
+            "Links":[
+                "OU=Marketing,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Marketing Servers Settings",
+            "Links":[
+                "OU=Marketing,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Marketing Workstations Settings",
+            "Links":[
+                "OU=Marketing,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Operations People Settings",
+            "Links":[
+                "OU=Operations,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Operations Servers Settings",
+            "Links":[
+                "OU=Operations,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Name":"Operations Workstations Settings",
+            "Links":[
+                "OU=Operations,OU=Workstations,DC=contoso,DC=com"
             ]
         }
     ],
@@ -737,19 +775,11 @@
             "Path":"DC=contoso,DC=com"
         },
         {
+            "Name":"External Contacts",
+            "Path":"DC=contoso,DC=com"
+        },
+        {
             "Name":"Groups",
-            "Path":"DC=contoso,DC=com"
-        },
-        {
-            "Name":"Servers",
-            "Path":"DC=contoso,DC=com"
-        },
-        {
-            "Name":"Workstations",
-            "Path":"DC=contoso,DC=com"
-        },
-        {
-            "Name":"Service Accounts",
             "Path":"DC=contoso,DC=com"
         },
         {
@@ -757,6 +787,18 @@
             "Path":"DC=contoso,DC=com"
         },
         {
+            "Name":"Servers",
+            "Path":"DC=contoso,DC=com"
+        },
+        {
+            "Name":"Service Accounts",
+            "Path":"DC=contoso,DC=com"
+        },
+        {
+            "Name":"Workstations",
+            "Path":"DC=contoso,DC=com"
+        },
+        {
             "Name":"Administration",
             "Path":"OU=Groups,DC=contoso,DC=com"
         },
@@ -774,26 +816,6 @@
         },
         {
             "Name":"Administration",
-            "Path":"OU=Workstations,DC=contoso,DC=com"
-        },
-        {
-            "Name":"IT",
-            "Path":"OU=Groups,DC=contoso,DC=com"
-        },
-        {
-            "Name":"IT",
-            "Path":"OU=People,DC=contoso,DC=com"
-        },
-        {
-            "Name":"IT",
-            "Path":"OU=Servers,DC=contoso,DC=com"
-        },
-        {
-            "Name":"IT",
-            "Path":"OU=Service Accounts,DC=contoso,DC=com"
-        },
-        {
-            "Name":"IT",
             "Path":"OU=Workstations,DC=contoso,DC=com"
         },
         {
@@ -854,6 +876,26 @@
         },
         {
             "Name":"Human Resources",
+            "Path":"OU=Workstations,DC=contoso,DC=com"
+        },
+        {
+            "Name":"IT",
+            "Path":"OU=Groups,DC=contoso,DC=com"
+        },
+        {
+            "Name":"IT",
+            "Path":"OU=People,DC=contoso,DC=com"
+        },
+        {
+            "Name":"IT",
+            "Path":"OU=Servers,DC=contoso,DC=com"
+        },
+        {
+            "Name":"IT",
+            "Path":"OU=Service Accounts,DC=contoso,DC=com"
+        },
+        {
+            "Name":"IT",
             "Path":"OU=Workstations,DC=contoso,DC=com"
         },
         {
@@ -906,7 +948,10 @@
             "EmployeeID":196770,
             "SamAccountName":"msantos",
             "Password":"s5i|l7MoG*27M|L;",
-            "Path":""
+            "Path":"OU=Administration,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Administration Share Modify"
+            ]
         },
         {
             "Surname":"Kaplan",
@@ -916,7 +961,10 @@
             "EmployeeID":313823,
             "SamAccountName":"gkaplan",
             "Password":"juLN&vPKToD$7;3B",
-            "Path":""
+            "Path":"OU=Administration,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Administration Share Modify"
+            ]
         },
         {
             "Surname":"Walter",
@@ -926,7 +974,10 @@
             "EmployeeID":623943,
             "SamAccountName":"bwalter",
             "Password":"a>[y4*Lajs2bWF4u",
-            "Path":""
+            "Path":"OU=Administration,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Administration Share Modify"
+            ]
         },
         {
             "Surname":"Sawyer",
@@ -936,7 +987,10 @@
             "EmployeeID":545423,
             "SamAccountName":"nsawyer",
             "Password":"l>-Wr5L=xR#wvX^M",
-            "Path":""
+            "Path":"OU=Development,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Development Share Modify"
+            ]
         },
         {
             "Surname":"Burton",
@@ -946,7 +1000,10 @@
             "EmployeeID":186651,
             "SamAccountName":"jburton",
             "Password":"G7xU3jb*9S}mi1g.",
-            "Path":""
+            "Path":"OU=Development,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Development Share Modify"
+            ]
         },
         {
             "Surname":"Casey",
@@ -956,7 +1013,13 @@
             "EmployeeID":430898,
             "SamAccountName":"rcasey",
             "Password":"EDK_ST?%5Ea4GZs9",
-            "Path":""
+            "Path":"OU=Development,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Development AD Delegates",
+                "Development Servers Local Administrators",
+                "Development Share Modify",
+                "Development Workstations Local Administrators"
+            ]
         },
         {
             "Surname":"Lynch",
@@ -966,7 +1029,10 @@
             "EmployeeID":534705,
             "SamAccountName":"mlynch",
             "Password":"&r3%*5K+.O96SfoD",
-            "Path":""
+            "Path":"OU=Finance,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Finance Share Modify"
+            ]
         },
         {
             "Surname":"Weber",
@@ -976,7 +1042,10 @@
             "EmployeeID":637667,
             "SamAccountName":"jweber",
             "Password":"pb5.OzQ5=F|G^Edw",
-            "Path":""
+            "Path":"OU=Finance,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Finance Share Modify"
+            ]
         },
         {
             "Surname":"Gillespie",
@@ -986,7 +1055,13 @@
             "EmployeeID":723960,
             "SamAccountName":"dgillespie",
             "Password":"CXw=.)7rt*=JEr8|",
-            "Path":""
+            "Path":"OU=Finance,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Finance AD Delegates",
+                "Finance Servers Local Administrators",
+                "Finance Share Modify",
+                "Finance Workstations Local Administrators"
+            ]
         },
         {
             "Surname":"Velasquez",
@@ -996,7 +1071,10 @@
             "EmployeeID":703549,
             "SamAccountName":"jvelasquez",
             "Password":"o0Vv;^fvHpzs!ObS",
-            "Path":""
+            "Path":"OU=Human Resources,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Human Resources Share Modify"
+            ]
         },
         {
             "Surname":"Kane",
@@ -1006,7 +1084,10 @@
             "EmployeeID":857530,
             "SamAccountName":"fkane",
             "Password":"_|kT!vEOi;MGpv8P",
-            "Path":""
+            "Path":"OU=Human Resources,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Human Resources Share Modify"
+            ]
         },
         {
             "Surname":"Case",
@@ -1016,7 +1097,13 @@
             "EmployeeID":109555,
             "SamAccountName":"ecase",
             "Password":"acBtK-0O^6#xgl5V",
-            "Path":""
+            "Path":"OU=Human Resources,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Human Resources AD Delegates",
+                "Human Resources Servers Local Administrators",
+                "Human Resources Share Modify",
+                "Human Resources Workstations Local Administrators"
+            ]
         },
         {
             "Surname":"Martinez",
@@ -1026,7 +1113,15 @@
             "EmployeeID":439938,
             "SamAccountName":"mmartinez",
             "Password":"y;UA36NEE[Xr&1!_",
-            "Path":""
+            "Path":"OU=IT,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Administration AD Delegates",
+                "Administration Servers Local Administrators",
+                "All Servers Local Administrators",
+                "IT AD Delegates",
+                "IT Servers Local Administrators",
+                "IT Share Modify"
+            ]
         },
         {
             "Surname":"Hardy",
@@ -1036,7 +1131,17 @@
             "EmployeeID":372533,
             "SamAccountName":"phardy",
             "Password":"!ePp9_#Q4x4]CJyC",
-            "Path":""
+            "Path":"OU=IT,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Administration AD Delegates",
+                "Administration Servers Local Administrators",
+                "All Servers Local Administrators",
+                "All Workstations Local Administrators",
+                "IT AD Delegates",
+                "IT Servers Local Administrators",
+                "IT Share Modify",
+                "IT Workstations Local Administrators"
+            ]
         },
         {
             "Surname":"Richards",
@@ -1046,7 +1151,13 @@
             "EmployeeID":232908,
             "SamAccountName":"drichards",
             "Password":"b)q0iC5!:Bu@_[F$",
-            "Path":""
+            "Path":"OU=IT,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Administration Workstations Local Administrators",
+                "All Workstations Local Administrators",
+                "IT Share Modify",
+                "IT Workstations Local Administrators"
+            ]
         },
         {
             "Surname":"Durham",
@@ -1056,7 +1167,10 @@
             "EmployeeID":280337,
             "SamAccountName":"ddurham",
             "Password":"Dt]}RsEy$KV&yYoI",
-            "Path":""
+            "Path":"OU=Marketing,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Marketing Share Modify"
+            ]
         },
         {
             "Surname":"Daly",
@@ -1066,7 +1180,10 @@
             "EmployeeID":637495,
             "SamAccountName":"gdaly",
             "Password":"[7?W&;JbV(ALwki^",
-            "Path":""
+            "Path":"OU=Marketing,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Marketing Share Modify"
+            ]
         },
         {
             "Surname":"Norton",
@@ -1076,7 +1193,13 @@
             "EmployeeID":124174,
             "SamAccountName":"dnorton",
             "Password":"zRK.A{Ry$5srQrv[",
-            "Path":""
+            "Path":"OU=Marketing,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Marketing AD Delegates",
+                "Marketing Servers Local Administrators",
+                "Marketing Share Modify",
+                "Marketing Workstations Local Administrators"
+            ]
         },
         {
             "Surname":"Taylor",
@@ -1086,7 +1209,10 @@
             "EmployeeID":585266,
             "SamAccountName":"ctaylor",
             "Password":"0hZWYe:@Mna8xofF",
-            "Path":""
+            "Path":"OU=Operations,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Operations Share Modify"
+            ]
         },
         {
             "Surname":"Thomas",
@@ -1096,7 +1222,10 @@
             "EmployeeID":299262,
             "SamAccountName":"jthomas",
             "Password":"1aq$OV^qe@sB4d.t",
-            "Path":""
+            "Path":"OU=Operations,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Operations Share Modify"
+            ]
         },
         {
             "Surname":"Carver",
@@ -1106,7 +1235,13 @@
             "EmployeeID":352832,
             "SamAccountName":"pcarver",
             "Password":"t+:.@&l{WF{f45PC",
-            "Path":""
+            "Path":"OU=Operations,OU=People,DC=contoso,DC=com",
+            "Groups":[
+                "Operations AD Delegates",
+                "Operations Servers Local Administrators",
+                "Operations Share Modify",
+                "Operations Workstations Local Administrators"
+            ]
         }
 
     ]

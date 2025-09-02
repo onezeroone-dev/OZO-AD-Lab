@@ -1,11 +1,6 @@
-## VARIABLES
-[String]         $DC     = "DC=contoso,DC=com"
-[Array]          $units  = @("Administration","IT","Development","Finance","Human Resources","Marketing","Operations")
-[Json]           $Configuration = (Get-Content -Path "C:\ProgramData\OZO AD Lab\ad-lab-configure.json" | ConvertFrom-Json)
 ## START TRANSCRIPT
-Start-Transcript -Append -Path "C:\ProgramData\AD Lab\transcript.txt"
-
-Install-Module DSACL -Force
+Start-Transcript -Append -Path "C:\ProgramData\OZO AD Lab\transcript.txt"
+# Import modules
 Import-Module ActiveDirectory,DSACL,GroupPolicy
 # Configure DNS
 Add-DnsServerPrimaryZone -NetworkID "172.16.1.0/24" -ReplicationScope "Forest"
@@ -19,69 +14,21 @@ Add-DhcpServerv4Scope -name "Clients" -StartRange 172.16.1.1 -EndRange 172.16.1.
 Add-DhcpServerv4ExclusionRange -ScopeID 172.16.1.0 -StartRange 172.16.1.1 -EndRange 172.16.1.100
 Set-DhcpServerv4OptionValue -OptionID 3 -Value 172.16.1.1 -ScopeID 172.16.1.0 -ComputerName "dc.contoso.com"
 Set-DhcpServerv4OptionValue -DnsDomain "contoso.com" -DnsServer 172.16.1.2
-Restart-Service dhcpserver
-# Configure DFS
-New-DfsnRoot 
-#### ORGANIZATIONAL UNITS
-# Create additional top-level OUs
-ForEach ($OU in $Configuration.ADOrganizationalUnits) {
-    New-ADOrganizationalUnit -Name $OU.Name -Path $OU.Path
-}
-# Create additional second-level OUs
-ForEach ($unit in $units) {
-    ForEach ($ou in $OUs) {
-        New-ADOrganizationalUnit -Name $unit -Path "OU=$ou,$DC"
-    }
-}
+Restart-Service dhcpserver 
+# Call ozo-ad-manage-directory-objects
+& ozo-ad-manage-directory-objects -Configuration (Join-Path -Path $Env:SystemDrive -ChildPath "OZO-AD-Lab\DC\ozo-ad-lab-configuration.json") -OutDir (Join-Path -Path $Env:SystemDrive -ChildPath "ProgramData\OZO-AD-Lab")
+# Call ozo-ad-manage-delegations
+& ozo-ad-manage-directory-objects -Configuration (Join-Path -Path $Env:SystemDrive -ChildPath "OZO-AD-Lab\DC\ozo-ad-lab-configuration.json") -OutDir (Join-Path -Path $Env:SystemDrive -ChildPath "ProgramData\OZO-AD-Lab")
 # Move default objects
 ForEach ($adObject in (Get-ADObject -Filter * -SearchBase "CN=Users,$DC")) {
     Switch($adObject.ObjectClass) {
         "user" {
-            Move-ADObject -Identity $adObject.DistinguishedName -TargetPath "OU=Domain Users,$DC"
+            Move-ADObject -Identity $adObject.DistinguishedName -TargetPath "OU=Domain Users,DC=contoso,DC=com"
         }
         "group" {
-            Move-ADObject -Identity $adObject.DistinguishedName -TargetPath "OU=Domain Groups,$DC"
+            Move-ADObject -Identity $adObject.DistinguishedName -TargetPath "OU=Domain Groups,DC=contoso,DC=com"
         }
     }
 }
-## GROUPS
-ForEach ($group in $groups) {
-    New-AdGroup -Name $group.Name -GroupScope $group.Scope -Path $group.Path
-    If ([String]::IsNullOrEmpty($group.Members)) {
-        Add-ADGroupMember -Identity $group.Name -Members ($group.Members -Split ";")
-    }
-}
-## PEOPLE
-# Create users
-ForEach ($user in $users) {
-    # Construct the samAccountName
-    $samAccountName = ($user.First[0] + $user.Last).ToLower()
-    New-ADUser -AccountPassword (ConvertTo-SecureString -AsPlainText -String $user.Password -Force) -Company "Contoso, Ltd." -Description $user.Title -DisplayName ($user.First + " " + $user.Last) -Division $user.Division -EmailAddress ($samAccountName + "@contoso.com") -EmployeeNumber $user.EmployeeID -Enabled $true -GivenName $user.First -Initials ($user.First[0] + $user.Last[0]).ToUpper() -Name $samAccountName -Path ("OU=" + $user.Division + ",OU=People,$DC") -Surname $user.Last -Title $user.Title
-    # Add to groups
-    If ([String]::IsNullOrEmpty($user.Groups)) {
-        ForEach ($group in ($user.Groups -Split ";")) {
-            Add-ADGroupMember -Identity $group -Members $samAccountName
-        }
-    }
-}
-## COMPUTERS
-# Create computers
-New-ADComputer -DisplayName "client" -Enabled $true -Name "client" -Path "OU=IT,OU=Workstations,$DC"
-New-ADComputer -DisplayName "server" -Enabled $true -Name "server" -Path "OU=IT,OU=Servers,$DC"
-
-## GROUP POLICY
-ForEach ($ou in "Servers","Workstations","People") {
-    New-GPO -Name "All $ou Settings" | New-GPLink -Target "OU=$ou,$DC" -LinkEnabled Yes -Enforced Yes
-}
-# Create and link unit policies
-ForEach ($unit in $units) {
-    ForEach ($ou in "Servers","Workstations","People") {
-        New-GPO -Name "$unit $ou Settings" | New-GPLink -Target "OU=$unit,OU=$ou,$DC"
-    }
-}
-
-# Call OZO AD Manage Delegations
-#&
-
 ## STOP TRANSCRIPT
 Stop-Transcript
