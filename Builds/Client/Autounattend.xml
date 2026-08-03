@@ -95,23 +95,33 @@
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Order>2</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-NetIPAddress -InterfaceAlias &apos;Ethernet&apos; -IPAddress &apos;172.16.1.99&apos; -PrefixLength 24 -DefaultGateway &apos;172.16.1.1&apos;}&quot;</Path>
+                    <Description>Configuring Ethernet adapter</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>3</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}&quot;</Path>
                     <Description>Installing Remote Server Administration Tools (RSAT)</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>3</Order>
+                    <Order>4</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module &apos;OZO&apos;,&apos;OZOAD&apos;,&apos;OZOFiles&apos;,&apos;OZOLogger&apos;,&apos;OZOStrings&apos; -Force}&quot;</Path>
                     <Description>Installing OZO PowerShell modules</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>4</Order>
+                    <Order>5</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;ozo-windows-event-log-provider-setup&apos; -Force}&quot;</Path>
                     <Description>Installing OZO PowerShell scripts</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>5</Order>
+                    <Order>6</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -File &quot;C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1&quot;</Path>
                     <Description>Executing OZO Windows Event Log Provider Setup</Description>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>7</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\ProgramData&apos;}&quot;</Path>
+                    <Description>Copying OZO AD Lab files</Description>
                 </RunSynchronousCommand>
             </RunSynchronous>
         </component>
@@ -129,17 +139,6 @@
         </component>
         <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <TimeZone>UTC</TimeZone>
-        </component>
-        <component name="Microsoft-Windows-UnattendedJoin" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <Identification>
-                <Credentials>
-                    <Domain>contoso.com</Domain>
-                    <Password>OZOADL@b$ecurePassw0rd</Password>
-                    <Username>Administrator</Username>
-                </Credentials>
-                <UnsecureJoin>false</UnsecureJoin>
-                <JoinDomain>contoso.com</JoinDomain>
-            </Identification>
         </component>
     </settings>
     <settings pass="oobeSystem">
