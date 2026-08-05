@@ -5,6 +5,13 @@
 #TARGET_ISO_LABEL="OZO-AD-Lab-Router"
 
 # wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-grub.cfg" KICKSTART_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-ks.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/almalinux-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
+# wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-grub.cfg" KICKSTART_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-ks.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/almalinux-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
+
+GRUB_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/Linux/ozo-ad-lab-grub.cfg"
+KICKSTART_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/Linux/ozo-ad-lab-router-ks.cfg"
+SOURCE_ISO_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/ISO/almalinux-boot.iso"
+TARGET_ISO_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/ISO/OZO-AD-Lab-Router.iso"
+TARGET_ISO_LABEL="OZO-AD-Lab-Router"
 
 # Local variables
 OZO_AD_LAB_PATH=~/ozo-ad-lab
@@ -74,7 +81,7 @@ cp $KICKSTART_PATH $COPY_PATH/ks.cfg
 cp -f $GRUB_PATH $COPY_PATH/boot/grub2/grub.cfg
 # Create the modified ISO
 # mkisofs -input-charset utf-8 -b isolinux/isolinux.bin -J -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/ >/dev/null 2>&1
-mkisofs -input-charset utf-8 -J -l -R -iso-level 3 -udf -e boot/grub2/i386-pc/boot.img -no-emul-boot -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/
+mkisofs -input-charset utf-8 -J -l -R -eltorito-boot images/efiboot.img -no-emul-boot -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/
 # >/dev/null 2>&1
 # Make the ISO writable to USB
 isohybrid --uefi $TARGET_ISO_PATH
