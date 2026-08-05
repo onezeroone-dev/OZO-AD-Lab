@@ -4,7 +4,7 @@
 #TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso"
 #TARGET_ISO_LABEL="OZO-AD-Lab-Router"
 
-# wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/grub.cfg" KICKSTART_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-ks.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/almalinux-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
+# wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-grub.cfg" KICKSTART_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-ks.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/almalinux-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
 
 # Local variables
 OZO_AD_LAB_PATH=~/ozo-ad-lab
@@ -70,17 +70,18 @@ rsync -av $MNT_PATH/ $COPY_PATH/ >/dev/null 2>&1
 umount $MNT_PATH >/dev/null 2>&1
 # Copy in the Kickstart
 cp $KICKSTART_PATH $COPY_PATH/ks.cfg
-# Copy in grub configuration
-cp -f $GRUB_PATH $COPY_PATH/EFI/BOOT/grub.cfg
+# Copy in Grub configuration
 cp -f $GRUB_PATH $COPY_PATH/boot/grub2/grub.cfg
 # Create the modified ISO
 # mkisofs -input-charset utf-8 -b isolinux/isolinux.bin -J -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/ >/dev/null 2>&1
-mkisofs -input-charset utf-8 -J -l -R -allow-multidot -iso-level 3 -udf -no-emul-boot -eltorito-boot images/eltorito.img -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/
+# mkisofs -input-charset utf-8 -J -l -R -iso-level 3 -udf -e images/eltorito.img -no-emul-boot -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/
+mkisofs -input-charset utf-8 -J -l -r -graft-points -boot-info-table -b images/eltorito.img -eltorito-boot images/eltorito.img -no-emul-boot -V AlmaLinux-10-2-x86_64-dvd -o $TARGET_ISO_PATH $COPY_PATH/
 # >/dev/null 2>&1
 # Make the ISO writable to USB
-#isohybrid --uefi $TARGET_ISO_PATH >/dev/null 2>&1
+isohybrid --uefi $TARGET_ISO_PATH >/dev/null 2>&1
 # Embed the MD5SUM
-implantisomd5 $TARGET_ISO_PATH >/dev/null 2>&1
+implantisomd5 $TARGET_ISO_PATH
+# >/dev/null 2>&1
 # Clean up
 rm -rf $OZO_AD_LAB_PATH >/dev/null 2>&1
 
