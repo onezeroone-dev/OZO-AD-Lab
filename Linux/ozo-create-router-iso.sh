@@ -74,11 +74,11 @@ cp $KICKSTART_PATH $COPY_PATH/ks.cfg
 cp -f $GRUB_PATH $COPY_PATH/boot/grub2/grub.cfg
 # Create the modified ISO
 # mkisofs -input-charset utf-8 -b isolinux/isolinux.bin -J -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/ >/dev/null 2>&1
-# mkisofs -input-charset utf-8 -J -l -R -iso-level 3 -udf -e images/eltorito.img -no-emul-boot -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/
-mkisofs -input-charset utf-8 -J -l -r -graft-points -boot-info-table -b images/eltorito.img -eltorito-boot images/eltorito.img -no-emul-boot -V AlmaLinux-10-2-x86_64-dvd -o $TARGET_ISO_PATH $COPY_PATH/
+mkisofs -input-charset utf-8 -J -l -R -iso-level 3 -udf -e boot/grub2/i386-pc/boot.img -no-emul-boot -V $TARGET_ISO_LABEL -o $TARGET_ISO_PATH $COPY_PATH/
 # >/dev/null 2>&1
 # Make the ISO writable to USB
-isohybrid --uefi $TARGET_ISO_PATH >/dev/null 2>&1
+isohybrid --uefi $TARGET_ISO_PATH
+# >/dev/null 2>&1
 # Embed the MD5SUM
 implantisomd5 $TARGET_ISO_PATH
 # >/dev/null 2>&1
