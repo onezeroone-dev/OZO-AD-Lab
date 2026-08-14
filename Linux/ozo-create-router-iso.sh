@@ -1,15 +1,16 @@
 #!/bin/bash
 
-#SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/almalinux-boot.iso"
+#SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/debian-netinst.iso"
 #TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso"
 #TARGET_ISO_LABEL="OZO-AD-Lab-Router"
 
-# wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-grub.cfg" KICKSTART_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-ks.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/almalinux-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
-# wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-grub.cfg" KICKSTART_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-ks.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/almalinux-boot.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
+# wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-grub.cfg" PRESEED_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-preseed.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/debian-netinst.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
+# wsl --distribution "Debian" --user root GRUB_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-grub.cfg" PRESEED_PATH="/mnt/c/ozo-ad-lab/Linux/ozo-ad-lab-router-preseed.cfg" SOURCE_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/debian-netinst.iso" TARGET_ISO_PATH="/mnt/c/ozo-ad-lab/ISO/OZO-AD-Lab-Router.iso" TARGET_ISO_LABEL="OZO-AD-Lab-Router" /mnt/c/ozo-ad-lab/Linux/ozo-create-router-iso.sh
 
+# Temporary for testing
 GRUB_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/Linux/ozo-ad-lab-grub.cfg"
-KICKSTART_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/Linux/ozo-ad-lab-router-ks.cfg"
-SOURCE_ISO_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/ISO/almalinux-boot.iso"
+PRESEED_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/Linux/ozo-ad-lab-router-preseed.cfg"
+SOURCE_ISO_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/ISO/debian-netinst.iso"
 TARGET_ISO_PATH="/mnt/c/Users/aliev/Git/OZO-AD-Lab/ISO/OZO-AD-Lab-Router.iso"
 TARGET_ISO_LABEL="OZO-AD-Lab-Router"
 
@@ -25,10 +26,10 @@ then
     exit 0
 fi
 
-# Fail if the Kickstart does not exist
-if [[ ! -f $KICKSTART_PATH ]]
+# Fail if the Preseed does not exist
+if [[ ! -f $PRESEED_PATH ]]
 then
-    echo "Kickstart file not found."
+    echo "Preseed file not found."
     exit 0
 fi
 
@@ -75,8 +76,8 @@ mount -o loop $SOURCE_ISO_PATH $MNT_PATH/ >/dev/null 2>&1
 rsync -av $MNT_PATH/ $COPY_PATH/ >/dev/null 2>&1
 # Unmount the ISO
 umount $MNT_PATH >/dev/null 2>&1
-# Copy in the Kickstart
-cp $KICKSTART_PATH $COPY_PATH/ks.cfg
+# Copy in the Preseed
+cp $PRESEED_PATH $COPY_PATH/preseed.cfg
 # Copy in Grub configuration
 cp -f $GRUB_PATH $COPY_PATH/boot/grub2/grub.cfg
 # Create the modified ISO
