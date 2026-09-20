@@ -105,21 +105,16 @@
             <RunSynchronous>
                 <RunSynchronousCommand wcm:action="add">
                     <Order>1</Order>
-                    <Path>reg add &quot;HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff&quot; /f</Path>
-                    <Description>Disabling new network window</Description>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Order>2</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-NetIPAddress -InterfaceAlias &apos;Ethernet&apos; -IPAddress &apos;172.16.1.100&apos; -PrefixLength 24 -DefaultGateway &apos;172.16.1.1&apos;}&quot;</Path>
                     <Description>Configuring Ethernet adapter</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>3</Order>
+                    <Order>2</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DnsClientServerAddress -InterfaceAlias &apos;Ethernet&apos; -ServerAddresses &apos;1.1.1.1&apos;}&quot;</Path>
                     <Description>Setting primary DNS address</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>4</Order>
+                    <Order>3</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DnsClientGlobalSetting -SuffixSearchList &apos;contoso.com&apos;}&quot;</Path>
                     <Description>Setting primary DNS search suffix</Description>
                 </RunSynchronousCommand>

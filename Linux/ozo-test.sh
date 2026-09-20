@@ -1,4 +1,0 @@
-echo $SOURCE_ISO_PATH
-echo $TARGET_ISO_PATH
-echo $TARGET_ISO_LABEL
-exit 1
