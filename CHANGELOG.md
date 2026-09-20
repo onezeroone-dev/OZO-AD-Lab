@@ -1,4 +1,4 @@
-# OZO AD Lab Change Log
+# One Zero One AD Lab Change Log
 
 |Date|Version|Description|
 |----|-------|-----------|
