@@ -214,13 +214,13 @@
                 <SynchronousCommand wcm:action="add">
                     <Description>Add write NTFS permission for Domain Administrators on the Share share on the DC</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>8</Order>
+                    <Order>9</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Invoke-Command -ComputerName &apos;dc.contoso.com&apos; -ScriptBlock { Import-Module NTFSSecurity; Add-NTFSAccess -Path &apos;C:\Share&apos; -Account (&apos;CONTOSO\Domain Users&apos;) -AccessRights &apos;ReadAndExecute&apos; -AccessType &apos;Allow&apos; -AppliesTo &apos;ThisFolderOnly&apos;; Add-NTFSAccess -Path &apos;C:\Share&apos; -Account (&apos;CONTOSO\Domain Administrators&apos;) -AccessRights &apos;FullControl&apos; -AccessType &apos;Allow&apos; -AppliesTo &apos;ThisFolderSubfoldersAndFiles&apos; }}</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Restart computer</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>99</Order>
+                    <Order>10</Order>
                     <CommandLine>cmd.exe /c shutdown /r /t 0</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>
@@ -229,8 +229,8 @@
                 <LogonCount>1</LogonCount>
                 <Username>CONTOSO\Administrator</Username>
                 <Password>
-                    <Value>OZOADL@b$ecurePassw0rd</Value>
-                    <PlainText>true</PlainText>
+                    <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
+                    <PlainText>false</PlainText>
                 </Password>
             </AutoLogon>
         </component>
