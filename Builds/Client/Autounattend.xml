@@ -89,53 +89,23 @@
         <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <RunSynchronous>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Enabling WinRM</Description>
-                    <Order>1</Order>
-                    <Path>cmd.exe /c winrm quickconfig -force</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Enabling PSRemoting</Description>
-                    <Order>2</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Enable-PSRemoting -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Setting the DC as a trusted host</Description>
-                    <Order>3</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-Item WSMan:\localhost\Client\TrustedHosts -Value &apos;172.16.1.2&apos; -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
                     <Description>Installing Package Provider</Description>
-                    <Order>4</Order>
+                    <Order>1</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Installing Modules</Description>
-                    <Order>5</Order>
+                    <Order>2</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing Modules</Description>
-                    <Order>6</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZO -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing Scripts</Description>
-                    <Order>7</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-lab-conifigure-lab,ozo-windows-event-log-provider-setup -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing OZO Windows Event Log Provider</Description>
-                    <Order>8</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -File "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
                     <Description>Copying OZO AD Lab files</Description>
-                    <Order>9</Order>
+                    <Order>3</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\ProgramData&apos;}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Enabling Local Administrator account</Description>
-                    <Order>10</Order>
+                    <Order>4</Order>
                     <Path>cmd.exe /c net user Administrator /active:yes</Path>
                 </RunSynchronousCommand>
             </RunSynchronous>
@@ -201,12 +171,6 @@
                     <CommandLine>cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <Description>Installing the DSACL PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>3</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module DSACL -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
                     <Description>Installing the OZO PowerShell module</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <Order>4</Order>
@@ -222,24 +186,18 @@
                     <Description>Installing the OZO AD Manage Delegations script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <Order>6</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-manage-delegations -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO AD Manage Directory Objects script</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>7</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-manage-directory-objects -Force}&quot;</CommandLine>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-lab-configure-lab -Force}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Installing the OZO Windows Event Log Provider setup script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>8</Order>
+                    <Order>7</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-windows-event-log-provider-setup -Force}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Running the OZO Windows Event Log Provider setup script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>9</Order>
+                    <Order>8</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>
