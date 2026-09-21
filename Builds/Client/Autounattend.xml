@@ -149,5 +149,5 @@
             </UserAccounts>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim:c:/ozo-ad-lab/wim/windows%2011%20enterprise/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim:c:/users/aliev/git/ozo-ad-lab/wim/windows%20client/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
