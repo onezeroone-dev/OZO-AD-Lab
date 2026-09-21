@@ -93,6 +93,7 @@
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;ozo-ad-lab-configure-lab&apos; -Force}&quot;</Path>
                     <Description>Installing OZO PowerShell scripts</Description>
                 </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
                     <Order>2</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\ProgramData&apos;}&quot;</Path>
                     <Description>Copying OZO AD Lab files</Description>
