@@ -264,22 +264,20 @@
             </UserAccounts>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
-                    <Description>Setting the Administrator password</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-LocalUser -Name "Administrator" -Password (ConvertTo-SecureString -AsPlainText -String &apos;OZOADL@b$ecurePassw0rd&apos; -Force)}&quot;</CommandLine>
-                    <Order>1</Order>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
                     <Description>Installing the Active Directory forest</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Import-Module ADDSDeployment; Install-ADDSForest -DomainName &apos;contoso.com&apos; -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText -String &apos;OZOADL@b$ecurePassw0rd&apos; -Force) -DomainMode 7 -DomainNetbiosName &apos;CONTOSO&apos; -ForestMode 7 -InstallDns -Force}&quot;</CommandLine>
-                    <Order>2</Order>
+                    <Order>1</Order>
                 </SynchronousCommand>
             </FirstLogonCommands>
             <AutoLogon>
                 <Enabled>true</Enabled>
                 <LogonCount>1</LogonCount>
                 <Username>Administrator</Username>
+                <Password>
+                    <Value>OZOADL@b$ecurePassw0rd</Value>
+                    <PlainText>true</PlainText>
+                </Password>
             </AutoLogon>
         </component>
     </settings>
