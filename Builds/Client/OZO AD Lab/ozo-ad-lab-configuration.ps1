@@ -29,48 +29,8 @@
     https://github.com/onezeroone-dev/OZO-AD-Lab-Configure-Lab/blob/main/README.md
 #>
 
-# PARAMETERS
-[CmdletBinding()] Param (
-    [Parameter(Mandatory=$false)][String] $Configuration = (Join-Path -Path $Env:SystemDrive -ChildPath "OZO-AD-Lab\ozo-ad-lab-configure-lab.json")
-)
-
-# SCRIPTBLOCKS
-# Set NTFS permissions
-$setNTFSPermissions = {
-    # Import modules
-    Import-Module NTFSSecurity
-    # Set local filesystem ACLs
-    $acl = (Get-Acl -Path "C:\Share")
-    $acl.SetAccessRuleProtection($true,$true)
-    Set-Acl -Path "C:\Share" -AclObject $acl
-    Remove-NTFSAccess -Path "C:\Share" -Account "BUILTIN\Users" -AccessRights CreateDirectories
-    Remove-NTFSAccess -Path "C:\Share" -Account "BUILTIN\Users" -AccessRights CreateFiles
-    Remove-NTFSAccess -Path "C:\Share" -Account "BUILTIN\Users" -AccessRights ReadAndExecute
-    Add-NTFSAccess -Path "C:\Share" -Account ("CONTOSO\Domain Users") -AccessRights "ReadAndExecute" -AccessType "Allow" -AppliesTo "ThisFolderOnly"
-    Add-NTFSAccess -Path "C:\Share" -Account ("CONTOSO\Domain Administrators") -AccessRights "FullControl" -AccessType "Allow" -AppliesTo "ThisFolderSubfoldersAndFiles"
-}
-
-# VARIABLES
-[PSCredential] $OZOADCredential = $null
-
-# MAIN
-# Try to get the Administrator credential from the user
-Try {
-    $OZOADCredential = (Get-Credential -Message "Enter the Administrator credential for the OZO AD Lab" -UserName "Administrator")
-} Catch {
-    Write-Error "Failed to get the Administrator credential: $_"
-    Exit 1
-}
 # Start the transcript
 Start-Transcript -Path (Join-Path -Path $Env:ProgramData -ChildPath "OZO AD Lab\ozo-ad-lab-configure.txt")
-# Determine that the DC is reachable for remote PowerShell
-If ((Test-NetConnection -ComputerName "dc.contoso.com" -Port 5985).TcpTestSucceeded -eq $true) {
-    # DC is reachable; set NTFS permissions
-    Invoke-Command -ComputerName "dc.contoso.com" -ScriptBlock $setNTFSPermissions
-} Else {
-    # DC is not reachable
-    Write-OZOProvider -Level "Warning" -Message "DC is not reachable on its production IP for remote PowerShell."
-}
 <#
 [String] $Configuration = (Join-Path -Path $Env:SystemDrive -ChildPath "OZO-AD-Lab\DC\ozo-ad-lab-configuration.json")
 [String] $OutDir = (Join-Path -Path $Env:SystemDrive -ChildPath "ProgramData\OZO-AD-Lab")
