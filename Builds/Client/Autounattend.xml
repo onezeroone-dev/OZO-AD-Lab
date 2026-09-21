@@ -104,18 +104,28 @@
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing OZO PowerShell scripts</Description>
+                    <Description>Enabling WinRM</Description>
                     <Order>4</Order>
+                    <Path>cmd.exe /c winrm quickconfig -force</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Setting the DC as a trusted host</Description>
+                    <Order>5</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-Item WSMan:\localhost\Client\TrustedHosts -Value &apos;172.16.1.100&apos; -Force}&quot;</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Installing OZO PowerShell scripts</Description>
+                    <Order>6</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;ozo-ad-lab-configure-lab&apos; -Force}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Copying OZO AD Lab files</Description>
-                    <Order>5</Order>
+                    <Order>7</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\ProgramData&apos;}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Enabling Local Administrator account</Description>
-                    <Order>6</Order>
+                    <Order>8</Order>
                     <Path>cmd.exe /c net user Administrator /active:yes</Path>
                 </RunSynchronousCommand>
             </RunSynchronous>
