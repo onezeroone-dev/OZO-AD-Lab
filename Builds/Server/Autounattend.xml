@@ -106,7 +106,7 @@
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Configuring Ethernet adapter</Description>
                     <Order>1</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-NetIPAddress -InterfaceAlias &apos;Ethernet&apos; -IPAddress &apos;172.16.1.100&apos; -PrefixLength 24 -DefaultGateway &apos;172.16.1.1&apos;}&quot;</Path>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-NetIPAddress -InterfaceAlias &apos;Ethernet&apos; -IPAddress &apos;172.16.1.2&apos; -PrefixLength 24 -DefaultGateway &apos;172.16.1.1&apos;}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Setting primary DNS address</Description>
@@ -117,6 +117,41 @@
                     <Description>Setting primary DNS search suffix</Description>
                     <Order>3</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DnsClientGlobalSetting -SuffixSearchList &apos;contoso.com&apos;}&quot;</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Disabling New Network Window</Description>
+                    <Order>4</Order>
+                    <Path>cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Enabling WinRM</Description>
+                    <Order>5</Order>
+                    <Path>cmd.exe /c winrm quickconfig -force</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Enabling PSRemoting</Description>
+                    <Order>6</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Enable-PSRemoting -Force}&quot;</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Installing Package Provider</Description>
+                    <Order>7</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}&quot;</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Installing Features</Description>
+                    <Order>8</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; Install-Feature AD-Domain-Services,DHCP,FS-DFS-Replication,FS-Resource-Manager,RSAT-ADDS,RSAT-ADLDS -IncludeManagementTools&quot;</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Installing Modules</Description>
+                    <Order>9</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module DSACL,NTFSSecurity,OZO,OZOAD,OZOFiles,OZOLogger,OZOStrings,OZOTaskScheduler -Force}&quot;</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Installing Scripts</Description>
+                    <Order>10</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-manage-directory-objects,ozo-ad-manage-delegations,ozo-windows-event-log-provider-setup -Force}&quot;</Path>
                 </RunSynchronousCommand>
             </RunSynchronous>
         </component>
