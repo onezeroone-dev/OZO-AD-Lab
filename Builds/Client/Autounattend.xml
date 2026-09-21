@@ -194,21 +194,15 @@
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOAD -Force}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO AD Manage Delegations script</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>6</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-lab-configure-lab -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
                     <Description>Installing the OZO Windows Event Log Provider setup script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>7</Order>
+                    <Order>6</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-windows-event-log-provider-setup -Force}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Running the OZO Windows Event Log Provider setup script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>8</Order>
+                    <Order>7</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>
