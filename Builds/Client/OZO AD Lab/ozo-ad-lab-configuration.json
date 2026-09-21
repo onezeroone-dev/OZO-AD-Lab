@@ -1,9 +1,8 @@
 {
     "Client":{
         "TemporaryIP":"172.16.1.99",
+        "TemporaryDNS":"1.1.1.1",
         "InterfaceName":"Ethernet",
-        "PrefixLength":24,
-        "GatewayIP":"172.16.1.1",
         "Modules":[
             "OZO",
             "OZOLogger"
@@ -13,7 +12,7 @@
         ]
     },
     "DC":{
-        "InstallatiopnIP":"172.16.1.100",
+        "InstallationIP":"172.16.1.100",
         "IP":"172.16.1.2",
         "InterfaceName":"Ethernet",
         "PrefixLength":24,
@@ -61,9 +60,6 @@
             "Finance"
         ],
         "UserOUPath":"OU=Users,DC=contoso,DC=com"
-    },
-    "OZO":{
-        "PlainText":"OZOADL@b$ecurePassw0rd"
     },
     "SMB":{
         "ShareName":"Share",
