@@ -153,66 +153,6 @@
                     <Order>10</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature -Name &apos;RSAT-ADDS&apos;,&apos;RSAT-ADLDS&apos;}&quot;</Path>
                 </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the DSACL PowerShell module</Description>
-                    <Order>11</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module DSACL -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the NTFSSecurity PowerShell module</Description>
-                    <Order>12</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module NTFSSecurity -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO PowerShell module</Description>
-                    <Order>13</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZO -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOAD PowerShell module</Description>
-                    <Order>14</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOAD -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOFiles PowerShell module</Description>
-                    <Order>15</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOFiles -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOLogger PowerShell module</Description>
-                    <Order>16</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOLogger -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOStrings PowerShell module</Description>
-                    <Order>17</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOStrings -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                <Description>Installing the OZOTaskScheduler PowerShell module</Description>
-                    <Order>18</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOTaskScheduler -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO AD Manage Directory Objects script</Description>
-                    <Order>19</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-manage-directory-objects -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO AD Manage Delegations script</Description>
-                    <Order>20</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-manage-delegations -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO Windows Event Log Provider setup script</Description>
-                    <Order>21</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-windows-event-log-provider-setup -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Running the OZO Windows Event Log Provider setup script</Description>
-                    <Order>22</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -File "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1</Path>
-                </RunSynchronousCommand>
             </RunSynchronous>
         </component>
         <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -264,10 +204,82 @@
             </UserAccounts>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
+                    <Description>Installing the DSACL PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>1</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module DSACL -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the NTFSSecurity PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>2</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module NTFSSecurity -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZO PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>3</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZO -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZOAD PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>4</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOAD -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZOFiles PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>5</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOFiles -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZOLogger PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>6</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOLogger -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZOStrings PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>7</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOStrings -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZOTaskScheduler PowerShell module</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>8</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOTaskScheduler -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZO AD Manage Directory Objects script</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>9</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-manage-directory-objects -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZO AD Manage Delegations script</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>10</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-ad-manage-delegations -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Installing the OZO Windows Event Log Provider setup script</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>11</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-windows-event-log-provider-setup -Force}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Running the OZO Windows Event Log Provider setup script</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>12</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
                     <Description>Installing the Active Directory forest</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Import-Module ADDSDeployment; Install-ADDSForest -DomainName &apos;contoso.com&apos; -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText -String &apos;OZOADL@b$ecurePassw0rd&apos; -Force) -DomainMode 7 -DomainNetbiosName &apos;CONTOSO&apos; -ForestMode 7 -InstallDns -Force}&quot;</CommandLine>
-                    <Order>1</Order>
+                    <Order>13</Order>
                 </SynchronousCommand>
             </FirstLogonCommands>
             <AutoLogon>
