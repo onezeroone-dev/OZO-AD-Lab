@@ -137,8 +137,8 @@
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>OZOADL@b$ecurePassw0rd</Value>
-                            <PlainText>true</PlainText>
+                            <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
+                            <PlainText>false</PlainText>
                         </Password>
                         <Description>Built-in account for administering the computer/domain</Description>
                         <DisplayName>Administrator</DisplayName>

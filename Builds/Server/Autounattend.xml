@@ -118,7 +118,6 @@
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DnsClientGlobalSetting -SuffixSearchList &apos;contoso.com&apos;}&quot;</Path>
                     <Description>Setting primary DNS search suffix</Description>
                 </RunSynchronousCommand>
-
             </RunSynchronous>
         </component>
         <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -158,8 +157,8 @@
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>OZOADL@b$ecurePassw0rd</Value>
-                            <PlainText>true</PlainText>
+                            <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
+                            <PlainText>false</PlainText>
                         </Password>
                         <Description>Built-in account for administering the computer/domain</Description>
                         <DisplayName>Administrator</DisplayName>
@@ -170,5 +169,5 @@
             </UserAccounts>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim:c:/ozo-ad-lab/wim/windows%20server%202022/install.wim#Windows Server 2022 SERVERSTANDARD" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim:c:/users/aliev/git/ozo-ad-lab/wim/windows%20server/install.wim#Windows Server 2025 SERVERSTANDARD" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
