@@ -88,7 +88,7 @@
     <settings pass="specialize">
         <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <RunSynchronous>
-            <RunSynchronousCommand wcm:action="add">
+                <RunSynchronousCommand wcm:action="add">
                     <Order>1</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-NetIPAddress -InterfaceAlias &apos;Ethernet&apos; -IPAddress &apos;172.16.1.99&apos; -PrefixLength 24 -DefaultGateway &apos;172.16.1.1&apos;}&quot;</Path>
                     <Description>Configuring Ethernet adapter</Description>
@@ -104,12 +104,12 @@
                     <Description>Installing OZO PowerShell scripts</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>3</Order>
+                    <Order>4</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script &apos;ozo-ad-lab-configure-lab&apos; -Force}&quot;</Path>
                     <Description>Installing OZO PowerShell scripts</Description>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Order>4</Order>
+                    <Order>5</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Copy-Item -Recurse -Path &apos;D:\OZO AD Lab&apos; -Destination &apos;C:\ProgramData&apos;}&quot;</Path>
                     <Description>Copying OZO AD Lab files</Description>
                 </RunSynchronousCommand>
@@ -164,5 +164,5 @@
             </UserAccounts>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim:c:/users/aliev/git/ozo-ad-lab/wim/windows%20client/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim:c:/ozo-ad-lab/wim/windows%20client/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
