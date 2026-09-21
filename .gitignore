@@ -2,7 +2,6 @@ AD Lab Source ISOs
 ISO/*iso
 Mount/*
 WIM/*/*wim
-WIM/*/*clg
 Builds/*/DVD
 Builds/*/boot
 Builds/*/efi
