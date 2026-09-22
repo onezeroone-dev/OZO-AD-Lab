@@ -104,55 +104,14 @@
         <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <RunSynchronous>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Configuring Ethernet adapter</Description>
+                    <Description>Copy OZO AD Lab files</Description>
                     <Order>1</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-NetIPAddress -InterfaceAlias &apos;Ethernet&apos; -IPAddress &apos;172.16.1.2&apos; -PrefixLength 24 -DefaultGateway &apos;172.16.1.1&apos;}&quot;</Path>
+                    <Path>robocopy.exe "D:\OZO AD Lab" "C:\ProgramData\OZO AD Lab" /E</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Setting primary DNS address</Description>
+                    <Description>Run Windows PE synchronous script</Description>
                     <Order>2</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DnsClientServerAddress -InterfaceAlias &apos;Ethernet&apos; -ServerAddresses &apos;1.1.1.1&apos;}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Setting primary DNS search suffix</Description>
-                    <Order>3</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DnsClientGlobalSetting -SuffixSearchList &apos;contoso.com&apos;}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing Package Provider</Description>
-                    <Order>5</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing Active Directory Domain Services (ADDS)</Description>
-                    <Order>6</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature AD-Domain-Services -IncludeManagementTools}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the DHCP server</Description>
-                    <Order>7</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature DHCP -IncludeManagementTools}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Adding DHCP security groups</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>8</Order>
-                    <Path>netsh dhcp add securitygroups</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing DFS</Description>
-                    <Order>9</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature FS-DFS-Replication -IncludeManagementTools}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing File Server Resource Manager</Description>
-                    <Order>10</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature FS-Resource-Manager -IncludeManagementTools}&quot;</Path>
-                </RunSynchronousCommand>
-                <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing the Remote Server Administration Tools (RSAT-ADDS and RSAT-ADLDS)</Description>
-                    <Order>11</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature -Name &apos;RSAT-ADDS&apos;,&apos;RSAT-ADLDS&apos;}&quot;</Path>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\windowspe-synchronous.ps1"</Path>
                 </RunSynchronousCommand>
             </RunSynchronous>
         </component>
@@ -205,140 +164,15 @@
             </UserAccounts>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
-                    <Description>Enabling Remote Desktop</Description>
+                    <Description>Run OOBESystem Synchronous Script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <Order>1</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-ItemProperty -Path &apos;HKLM:\System\CurrentControlSet\Control\Terminal Server&apos; -Name &apos;fDenyTSConnections&apos; -Value 0; Set-ItemProperty -Path &apos;HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&apos; -Name &apos;UserAuthentication&apos; -Value 1}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Disabling New Network Window</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>2</Order>
-                    <CommandLine>cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the DSACL PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>3</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module DSACL -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>4</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module NTFSSecurity -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>5</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZO -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOAD PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>6</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOAD -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOFiles PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>7</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOFiles -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOLogger PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>8</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOLogger -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOStrings PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>9</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOStrings -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZOTaskScheduler PowerShell module</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>10</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Module OZOTaskScheduler -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the OZO Windows Event Log Provider setup script</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>11</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-Script ozo-windows-event-log-provider-setup -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Running the OZO Windows Event Log Provider setup script</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>12</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Creating share folder</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>13</Order>
-                    <CommandLine>cmd.exe /c md C:\Share</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Setting ACL on Share folder</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>14</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {$acl = (Get-Acl -Path &apos;C:\Share&apos;); $acl.SetAccessRuleProtection($true,$true); Set-Acl -Path &apos;C:\Share&apos; -AclObject $acl}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Creating SMB share</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>15</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-SmbShare -FolderEnumerationMode &apos;AccessBased&apos; -FullAccess &apos;NT AUTHORITY\Authenticated Users&apos; -Name &apos;Share&apos; -Path &apos;C:\Share&apos;}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Installing the Active Directory forest</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>16</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Import-Module ADDSDeployment; Install-ADDSForest -DomainName &apos;contoso.com&apos; -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText -String &apos;OZOADL@b$ecurePassw0rd&apos; -Force) -DomainMode 7 -DomainNetbiosName &apos;CONTOSO&apos; -ForestMode 7 -InstallDns -NoRebootOnCompletion -Force}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Configure primary DNS zone</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>17</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DnsServerPrimaryZone -NetworkID &apos;172.16.1.0/24&apos; -ReplicationScope &apos;Forest&apos;}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Adding DHCP server in DC</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>18</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DhcpServerInDC -DnsName &apos;dc.contoso.com&apos; -IPAddress &apos;172.16.1.2&apos;}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Setting DHCP Server v4 DNS settings</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>19</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DhcpServerv4DnsSetting -ComputerName &apos;dc.contoso.com&apos; -DynamicUpdates &apos;Always&apos; -DeleteDnsRRonLeaseExpiry $True}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Adding a DHCP Server v4 scope</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>20</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DhcpServerv4Scope -Name &apos;Clients&apos; -StartRange &apos;172.16.1.1&apos; -EndRange &apos;172.16.1.254&apos; -SubnetMask &apos;255.255.255.0&apos; -State Active}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Adding a DHCP Server v4 exclusion range</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>21</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DhcpServerv4ExclusionRange -ScopeID &apos;172.16.1.0&apos; -StartRange &apos;172.16.1.1&apos; -EndRange &apos;172.16.1.100&apos;}&quot;</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Setting DHCP Server v4 option values</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>22</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DhcpServerv4OptionValue -OptionId 3 -Value &apos;172.16.1.1&apos; -ScopeID &apos;172.16.1.0&apos; -ComputerName &apos;dc.contoso.com&apos;; Set-DhcpServerv4OptionValue -DnsDomain &apos;contoso.com&apos; -DnsServer &apos;172.16.1.2&apos;}&quot;</CommandLine>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1"</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Restart computer</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>23</Order>
+                    <Order>2</Order>
                     <CommandLine>cmd.exe /c shutdown /r /t 0</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>
