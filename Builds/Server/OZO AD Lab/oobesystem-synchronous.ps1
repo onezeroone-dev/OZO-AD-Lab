@@ -4,7 +4,6 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     # First boot; start transcript
     Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log"
     # Import the ActiveDirectory and ADDSDeployment modules
-    Import-Module ActiveDirectory
     Import-Module ADDSDeployment
     # Enable Remote Desktop
     Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
@@ -28,7 +27,7 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     # Install the Active Directory Forest
     Install-ADDSForest -DomainName "contoso.com" -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText -String 'OZOADL@b$ecurePassw0rd' -Force) -DomainMode 7 -DomainNetbiosName "CONTOSO" -ForestMode 7 -InstallDns -NoRebootOnCompletion -Force
     # Schedule the run of the this script on the next login
-    Register-ScheduledTask -TaskName "OZO AD Lab OOBE System Second Boot" -Trigger (New-ScheduledTaskTrigger -AtLogOn) -Action (New-ScheduledTaskAction -Execute "powerShell.exe" -Argument "-ExecutionPolicy Bypass -File C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1") -RunLevel Highest -Force
+    Register-ScheduledTask -TaskName "OZO AD Lab OOBE System Second Boot" -Trigger (New-ScheduledTaskTrigger -AtLogOn) -Action (New-ScheduledTaskAction -Execute "powerShell.exe" -Argument '-ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1"') -RunLevel Highest -Force
     # Stop transcript
     Stop-Transcript
     # Restart the computer
@@ -44,6 +43,7 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     & netsh dhcp add securitygroups
     # Add DHCP server in DC
     Add-DhcpServerInDC -DnsName "dc.contoso.com" -IPAddress "172.16.1.2"
+    Set-ItemProperty -Path "registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ServerManager\Roles\12" -Name ConfigurationState -Value 2
     # Set DHCP Server v4 DNS settings
     Set-DhcpServerv4DnsSetting -ComputerName "dc.contoso.com" -DynamicUpdates "Always" -DeleteDnsRRonLeaseExpiry $True
     # Add a DHCP Server v4 scope
