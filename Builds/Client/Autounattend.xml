@@ -94,9 +94,9 @@
                     <Path>robocopy.exe "D:\OZO AD Lab" "C:\ProgramData\OZO AD Lab" /E</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Running WindowsPE Synchronous script</Description>
+                    <Description>Enable local Administrator account</Description>
                     <Order>2</Order>
-                    <Path>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\windowspe-synchronous.ps1"</Path>
+                    <Path>cmd.exe /c net user Administrator /active:yes</Path>
                 </RunSynchronousCommand>
             </RunSynchronous>
         </component>
