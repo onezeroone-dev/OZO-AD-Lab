@@ -169,7 +169,7 @@
             <AutoLogon>
                 <Enabled>true</Enabled>
                 <LogonCount>1</LogonCount>
-                <Username>CONTOSO\Administrator</Username>
+                <Username>Administrator</Username>
                 <Password>
                     <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
                     <PlainText>false</PlainText>
