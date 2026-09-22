@@ -1,5 +1,5 @@
 # Start transcript
-Start-Transcript -Path "C:\ProgramData\OZO AD Lab\windowspe-synchronous.log" -Force
+Start-Transcript -Path "C:\ProgramData\OZO AD Lab\windowspe-synchronous.log"
 # Configure the Ethernet adapter
 New-NetIPAddress -InterfaceAlias "Ethernet" -IPAddress "172.16.1.2" -PrefixLength 24 -DefaultGateway "172.16.1.1"
 Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses "1.1.1.1"
