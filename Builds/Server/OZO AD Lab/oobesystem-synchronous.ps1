@@ -28,7 +28,7 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     # Install the Active Directory Forest
     Install-ADDSForest -DomainName "contoso.com" -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText -String 'OZOADL@b$ecurePassw0rd' -Force) -DomainMode 7 -DomainNetbiosName "CONTOSO" -ForestMode 7 -InstallDns -NoRebootOnCompletion -Force
     # Schedule the run of the this script on the next login
-    Register-ScheduledTask -TaskName "OZO AD Lab OOBE System Second Boot" -Trigger (New-ScheduledTaskTrigger -AtLogOn) -Action (New-ScheduledTaskAction -Execute "powerShell.exe" -Argument "-ExecutionPolicy Bypass -File 'C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1'") -RunLevel Highest -Force
+    Register-ScheduledTask -TaskName "OZO AD Lab OOBE System Second Boot" -Trigger (New-ScheduledTaskTrigger -AtLogOn) -Action (New-ScheduledTaskAction -Execute "powerShell.exe" -Argument "-ExecutionPolicy Bypass -File C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1") -RunLevel Highest -Force
     # Stop transcript
     Stop-Transcript
     # Restart the computer
@@ -40,6 +40,8 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     Import-Module ActiveDirectory
     # Add DNS server primary zone
     Add-DnsServerPrimaryZone -NetworkID "172.16.1.0/24" -ReplicationScope "Forest"
+    # Add DHCP security groups
+    & netsh dhcp add securitygroups
     # Add DHCP server in DC
     Add-DhcpServerInDC -DnsName "dc.contoso.com" -IPAddress "172.16.1.2"
     # Set DHCP Server v4 DNS settings
