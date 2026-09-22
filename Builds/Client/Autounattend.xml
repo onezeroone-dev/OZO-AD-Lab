@@ -119,11 +119,6 @@
             <Identification>
                 <JoinDomain>contoso.com</JoinDomain>
                 <UnsecureJoin>true</UnsecureJoin>
-                <Credentials>
-                    <Domain>contoso.com</Domain>
-                    <Password>OZOADL@b$ecurePassw0rd</Password>
-                    <Username>Administrator</Username>
-                </Credentials>
             </Identification>
         </component>
     </settings>
