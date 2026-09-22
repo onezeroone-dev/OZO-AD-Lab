@@ -12,11 +12,11 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\W
 # Disable New Network Window
 reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
 # Install OZO PowerShell module
-Install-Module OZO -Force
+#Install-Module OZO -Force
 # Install OZOAD PowerShell module
-Install-Module OZOAD -Force
+#Install-Module OZOAD -Force
 # Install OZOLogger PowerShell module
-Install-Module OZOLogger -Force
+#Install-Module OZOLogger -Force
 # Install OZO Windows Event Log Provider setup script
 Install-Script ozo-windows-event-log-provider-setup -Force
 # Run OZO Windows Event Log Provider setup script
