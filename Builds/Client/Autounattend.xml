@@ -209,18 +209,42 @@
                     <Description>Remove write NTFS permission for BuiltIn Users on the Share share on the DC</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <Order>7</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Invoke-Command -ComputerName &apos;dc.contoso.com&apos; -ScriptBlock { Import-Module NTFSSecurity; Remove-NTFSAccess -Path &apos;C:\Share&apos; -Account &apos;BUILTIN\Users&apos; -AccessRights CreateDirectories; Remove-NTFSAccess -Path &apos;C:\Share&apos; -Account &apos;BUILTIN\Users&apos; -AccessRights CreateFiles; Remove-NTFSAccess -Path &apos;C:\Share&apos; -Account &apos;BUILTIN\Users&apos; -AccessRights ReadAndExecute }}</CommandLine>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Invoke-Command -ComputerName &apos;dc.contoso.com&apos; -ScriptBlock { Import-Module NTFSSecurity; Remove-NTFSAccess -Path &apos;C:\Share&apos; -Account &apos;BUILTIN\Users&apos; -AccessRights CreateDirectories; Remove-NTFSAccess -Path &apos;C:\Share&apos; -Account &apos;BUILTIN\Users&apos; -AccessRights CreateFiles; Remove-NTFSAccess -Path &apos;C:\Share&apos; -Account &apos;BUILTIN\Users&apos; -AccessRights ReadAndExecute }}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Add write NTFS permission for Domain Administrators on the Share share on the DC</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <Order>8</Order>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Invoke-Command -ComputerName &apos;dc.contoso.com&apos; -ScriptBlock { Import-Module NTFSSecurity; Add-NTFSAccess -Path &apos;C:\Share&apos; -Account (&apos;CONTOSO\Domain Users&apos;) -AccessRights &apos;ReadAndExecute&apos; -AccessType &apos;Allow&apos; -AppliesTo &apos;ThisFolderOnly&apos;; Add-NTFSAccess -Path &apos;C:\Share&apos; -Account (&apos;CONTOSO\Domain Administrators&apos;) -AccessRights &apos;FullControl&apos; -AccessType &apos;Allow&apos; -AppliesTo &apos;ThisFolderSubfoldersAndFiles&apos; }}</CommandLine>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Invoke-Command -ComputerName &apos;dc.contoso.com&apos; -ScriptBlock { Import-Module NTFSSecurity; Add-NTFSAccess -Path &apos;C:\Share&apos; -Account (&apos;CONTOSO\Domain Users&apos;) -AccessRights &apos;ReadAndExecute&apos; -AccessType &apos;Allow&apos; -AppliesTo &apos;ThisFolderOnly&apos;; Add-NTFSAccess -Path &apos;C:\Share&apos; -Account (&apos;CONTOSO\Domain Administrators&apos;) -AccessRights &apos;FullControl&apos; -AccessType &apos;Allow&apos; -AppliesTo &apos;ThisFolderSubfoldersAndFiles&apos; }}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Add a Domain Groups OU</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>9</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-ADOrganizationalUnit -Name &apos;Domain Groups&apos; -Path &apos;DC=contoso,DC=com&apos;}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Add a Domain Users OU</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>10</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {New-ADOrganizationalUnit -Name &apos;Domain Users&apos; -Path &apos;DC=contoso,DC=com&apos;}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Move all default group objects to the Domain Groups OU</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>11</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Get-ADObject -Filter * -SearchBase &apos;CN=Users,DC=contoso,DC=com&apos; | Where-Object { $_.ObjectClass.ToLower() -eq &quot;group&quot; } | Move-ADObject -TargetPath &apos;OU=Domain Groups,DC=contoso,DC=com&apos;}&quot;</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Move all default user objects to the Domain Users OU</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>12</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Get-ADObject -Filter * -SearchBase &apos;CN=Users,DC=contoso,DC=com&apos; | Where-Object { $_.ObjectClass.ToLower() -eq &quot;user&quot; } | Move-ADObject -TargetPath &apos;OU=Domain Users,DC=contoso,DC=com&apos;}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Restart computer</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>9</Order>
+                    <Order>99</Order>
                     <CommandLine>cmd.exe /c shutdown /r /t 0</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>

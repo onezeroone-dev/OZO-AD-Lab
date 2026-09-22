@@ -134,18 +134,24 @@
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature DHCP -IncludeManagementTools}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Installing DFS</Description>
+                    <Description>Adding DHCP security groups</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
                     <Order>8</Order>
+                    <Path>netsh dhcp add securitygroups</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Installing DFS</Description>
+                    <Order>9</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature FS-DFS-Replication -IncludeManagementTools}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Installing File Server Resource Manager</Description>
-                    <Order>9</Order>
+                    <Order>10</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature FS-Resource-Manager -IncludeManagementTools}&quot;</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
                     <Description>Installing the Remote Server Administration Tools (RSAT-ADDS and RSAT-ADLDS)</Description>
-                    <Order>10</Order>
+                    <Order>11</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Install-WindowsFeature -Name &apos;RSAT-ADDS&apos;,&apos;RSAT-ADLDS&apos;}&quot;</Path>
                 </RunSynchronousCommand>
             </RunSynchronous>
@@ -300,45 +306,39 @@
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DnsServerPrimaryZone -NetworkID &apos;172.16.1.0/24&apos; -ReplicationScope &apos;Forest&apos;}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <Description>Creating DHCP security groups</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>18</Order>
-                    <CommandLine>cmd.exe /c netsh dhcp add securitygroups</CommandLine>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
                     <Description>Adding DHCP server in DC</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>19</Order>
+                    <Order>18</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DhcpServerInDC -DnsName &apos;dc.contoso.com&apos; -IPAddress &apos;172.16.1.2&apos;}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Setting DHCP Server v4 DNS settings</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>20</Order>
+                    <Order>19</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DhcpServerv4DnsSetting -ComputerName &apos;dc.contoso.com&apos; -DynamicUpdates &apos;Always&apos; -DeleteDnsRRonLeaseExpiry $True}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Adding a DHCP Server v4 scope</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>21</Order>
+                    <Order>20</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DhcpServerv4Scope -Name &apos;Clients&apos; -StartRange &apos;172.16.1.1&apos; -EndRange &apos;172.16.1.254&apos; -SubnetMask &apos;255.255.255.0&apos; -State Active}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Adding a DHCP Server v4 exclusion range</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>22</Order>
+                    <Order>21</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Add-DhcpServerv4ExclusionRange -ScopeID &apos;172.16.1.0&apos; -StartRange &apos;172.16.1.1&apos; -EndRange &apos;172.16.1.100&apos;}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Setting DHCP Server v4 option values</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>23</Order>
+                    <Order>22</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command &quot;&amp; {Set-DhcpServerv4OptionValue -OptionId 3 -Value &apos;172.16.1.1&apos; -ScopeID &apos;172.16.1.0&apos; -ComputerName &apos;dc.contoso.com&apos;; Set-DhcpServerv4OptionValue -DnsDomain &apos;contoso.com&apos; -DnsServer &apos;172.16.1.2&apos;}&quot;</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Description>Restart computer</Description>
                     <RequiresUserInput>false</RequiresUserInput>
-                    <Order>24</Order>
+                    <Order>23</Order>
                     <CommandLine>cmd.exe /c shutdown /r /t 0</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>
