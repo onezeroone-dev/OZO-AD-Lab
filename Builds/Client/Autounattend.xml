@@ -159,7 +159,7 @@
                 </LocalAccounts>
             </UserAccounts>
             <FirstLogonCommands>
-            <SynchronousCommand wcm:action="add">
+                <SynchronousCommand wcm:action="add">
                     <Description>Running OOBESystem Synchronous script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <Order>1</Order>
