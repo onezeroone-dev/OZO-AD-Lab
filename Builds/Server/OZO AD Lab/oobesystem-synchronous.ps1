@@ -31,7 +31,7 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     Stop-Transcript
 } Else {
     # Second boot; start transcript
-    Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous-secondboot.log" -Append
+    Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log" -Append
     # Import the ActiveDirectory module
     Import-Module ActiveDirectory
     # Add DNS server primary zone
