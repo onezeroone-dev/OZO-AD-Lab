@@ -19,3 +19,5 @@ Install-Script ozo-windows-event-log-provider-setup -Force
 & "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1"
 # Stop transcript
 Stop-Transcript
+# Restart computer
+Restart-Computer -Force

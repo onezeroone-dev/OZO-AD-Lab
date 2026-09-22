@@ -27,8 +27,12 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     & "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1"
     # Install the Active Directory Forest
     Install-ADDSForest -DomainName "contoso.com" -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText -String 'OZOADL@b$ecurePassw0rd' -Force) -DomainMode 7 -DomainNetbiosName "CONTOSO" -ForestMode 7 -InstallDns -NoRebootOnCompletion -Force
+    # Schedule the run of the this script on the next login
+    Register-ScheduledTask -TaskName "OZO AD Lab OOBE System Second Run" -Trigger (New-ScheduledTaskTrigger -AtLogOn) -Action (New-ScheduledTaskAction -Execute "powerShell.exe" -Argument "-ExecutionPolicy Bypass -File 'C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1'") -RunLevel Highest -Force
     # Stop transcript
     Stop-Transcript
+    # Restart the computer
+    Restart-Computer -Force
 } Else {
     # Second boot; start transcript
     Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log" -Append
@@ -64,13 +68,18 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     # Import NTFSSecurity module
     Import-Module NTFSSecurity
     # Remove write NTFS permission for BuiltIn Users on the Share share
-    Remove-NTFSAccess -Path "C:\Share" -Account "BUILTIN\Users" -AccessRights CreateDirectories; Remove-NTFSAccess -Path "C:\Share" -Account "BUILTIN\Users" -AccessRights CreateFiles
-    Remove-NTFSAccess -Path "C:\Share" -Account "BUILTIN\Users" -AccessRights ReadAndExecute
+    Remove-NTFSAccess -Path $sharePath -Account "BUILTIN\Users" -AccessRights CreateDirectories
+    Remove-NTFSAccess -Path $sharePath -Account "BUILTIN\Users" -AccessRights CreateFiles
+    Remove-NTFSAccess -Path $sharePath -Account "BUILTIN\Users" -AccessRights ReadAndExecute
     # Add read permissions for Domain Users and write permissions Domain Administrators on the Share share
-    Add-NTFSAccess -Path "C:\Share" -Account "CONTOSO\Domain Users" -AccessRights ReadAndExecute -AccessType Allow -AppliesTo ThisFolderOnly
-    Add-NTFSAccess -Path "C:\Share" -Account "CONTOSO\Domain Administrators" -AccessRights FullControl -AccessType Allow -AppliesTo ThisFolderSubfoldersAndFiles
+    Add-NTFSAccess -Path $sharePath -Account "CONTOSO\Domain Users" -AccessRights "ReadAndExecute" -AccessType "Allow" -AppliesTo "ThisFolderOnly"
+    Add-NTFSAccess -Path $sharePath -Account "CONTOSO\Domain Admins" -AccessRights "FullControl" -AccessType "Allow" -AppliesTo "ThisFolderSubfoldersAndFiles"
     # Create the SMB share
     New-SmbShare -FolderEnumerationMode "AccessBased" -FullAccess "NT AUTHORITY\Authenticated Users" -Name "Share" -Path "C:\Share"
+    # Unregister the scheduled task for the next run
+    Unregister-ScheduledTask -TaskName "OZO AD Lab OOBE System Second Run" -Confirm:$false
     # Stop transcript
     Stop-Transcript
+    # Restart the computer
+    Restart-Computer -Force
 }

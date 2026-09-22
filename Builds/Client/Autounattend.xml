@@ -165,12 +165,6 @@
                     <Order>1</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1"</CommandLine>
                 </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <Description>Restart computer</Description>
-                    <RequiresUserInput>false</RequiresUserInput>
-                    <Order>2</Order>
-                    <CommandLine>cmd.exe /c shutdown /r /t 0</CommandLine>
-                </SynchronousCommand>
             </FirstLogonCommands>
             <AutoLogon>
                 <Enabled>true</Enabled>
