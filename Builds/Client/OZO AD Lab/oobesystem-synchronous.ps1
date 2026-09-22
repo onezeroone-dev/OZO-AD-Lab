@@ -1,4 +1,4 @@
-#Requires -Modules ActiveDirectory -RunAsAdministrator
+#Requires -RunAsAdministrator
 
 # Start transcript
 Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log"
