@@ -1,5 +1,6 @@
 #Requires -RunAsAdministrator
 
+# Add User32 class for finding windows by class name
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
@@ -10,6 +11,7 @@ public class User32 {
 }
 "@
 
+# Wait for the desktop window to be available and for the Explorer process to be running
 Do {
     Start-Sleep -Seconds 1
 } Until ([User32]::FindWindow("Progman", $null) -eq [IntPtr]::Zero -And (Get-Process explorer -ErrorAction SilentlyContinue) -eq $true)
