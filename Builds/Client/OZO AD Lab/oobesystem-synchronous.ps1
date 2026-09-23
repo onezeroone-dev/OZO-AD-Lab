@@ -22,7 +22,7 @@ Install-Script ozo-windows-event-log-provider-setup -Force
 # Run OZO Windows Event Log Provider setup script
 & "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1"
 # Join to domain
-Add-Computer -DomainName "contoso.com" -Credential (New-Object System.Management.Automation.PSCredential ("Administrator", (ConvertTo-SecureString 'OZOADL@b$ecurePassw0rd' -AsPlainText -Force)))
+Add-Computer -DomainName "contoso.com" -Credential (New-Object System.Management.Automation.PSCredential("Administrator", (ConvertTo-SecureString 'OZOADL@b$ecurePassw0rd' -AsPlainText -Force)))
 # Stop transcript
 Stop-Transcript
 # Restart computer
