@@ -23,12 +23,8 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\W
 reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
 # Install package provider
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-# Install features
-#Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
 # Install OZO PowerShell module
 Install-Module OZO -Force
-# Install OZOAD PowerShell module
-#Install-Module OZOAD -Force
 # Install OZOLogger PowerShell module
 Install-Module OZOLogger -Force
 # Install OZO Windows Event Log Provider setup script
