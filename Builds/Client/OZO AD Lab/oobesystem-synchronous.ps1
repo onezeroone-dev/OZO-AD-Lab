@@ -1,5 +1,19 @@
 #Requires -RunAsAdministrator
 
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+
+public class User32 {
+    [DllImport("user32.dll")]
+    public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+}
+"@
+
+Do {
+    Start-Sleep -Seconds 1
+} Until ([User32]::FindWindow("Progman", $null) -eq [IntPtr]::Zero -And (Get-Process explorer -ErrorAction SilentlyContinue) -eq $true)
+
 # Start transcript
 Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log"
 # Enable Remote Desktop
@@ -10,11 +24,11 @@ reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
 # Install package provider
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 # Install features
-Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
+#Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
 # Install OZO PowerShell module
 Install-Module OZO -Force
 # Install OZOAD PowerShell module
-Install-Module OZOAD -Force
+#Install-Module OZOAD -Force
 # Install OZOLogger PowerShell module
 Install-Module OZOLogger -Force
 # Install OZO Windows Event Log Provider setup script
