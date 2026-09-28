@@ -8,6 +8,8 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 1
     # Disable new network window
     & cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
+    # Set Execution Policy
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force
     # Install DSACL PowerShell module
     Install-Module -Name DSACL -Force
     # Install NTFSSecurity PowerShell module
