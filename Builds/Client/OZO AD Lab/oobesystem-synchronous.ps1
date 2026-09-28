@@ -11,10 +11,20 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\W
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force -ErrorAction SilentlyContinue
 # Install RSAT
 Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
+# Install ImportExcel
+Install-Module ImportExcel -Force
 # Install OZO PowerShell module
 Install-Module OZO -Force
+# Install OZOAD PowerShell module
+Install-Module OZOAD -Force
+# Install OZOFiles PowerShell module
+Install-Module OZOFiles -Force
 # Install OZOLogger PowerShell module
 Install-Module OZOLogger -Force
+# Install OZO AD Manage Delegations script
+Install-Script ozo-ad-manage-delegations -Force
+# Install OZO AD Manage Directory Objects script
+Install-Script ozo-ad-manage-directory-objects -Force
 # Install OZO Windows Event Log Provider setup script
 Install-Script ozo-windows-event-log-provider-setup -Force
 # Run OZO Windows Event Log Provider setup script
