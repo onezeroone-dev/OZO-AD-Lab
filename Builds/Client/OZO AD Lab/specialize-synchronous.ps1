@@ -23,7 +23,7 @@ Start-Transcript -Path "C:\ProgramData\OZO AD Lab\specialize-synchronous.log"
 Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 1
 # Disable New Network Window
-reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
+& cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
 # Install package provider
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 # Install OZO PowerShell module
