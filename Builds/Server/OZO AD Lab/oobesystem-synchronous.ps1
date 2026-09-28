@@ -3,8 +3,6 @@
 If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log" -ErrorAction SilentlyContinue) -eq $false) {
     # First boot; start transcript
     Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log"
-    # Import the ActiveDirectory and ADDSDeployment modules
-    Import-Module ADDSDeployment
     # Enable Remote Desktop
     Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 1
@@ -24,6 +22,8 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     Install-Script -Name ozo-windows-event-log-provider-setup -Force
     # Run OZO Windows Event Log Provider setup script
     & "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1"
+    # Import the ADDSDeployment module
+    Import-Module ADDSDeployment
     # Install the Active Directory Forest
     Install-ADDSForest -DomainName "contoso.com" -SafeModeAdministratorPassword (ConvertTo-SecureString -AsPlainText -String 'OZOADL@b$ecurePassw0rd' -Force) -DomainMode 7 -DomainNetbiosName "CONTOSO" -ForestMode 7 -InstallDns -NoRebootOnCompletion -Force
     # Schedule the run of the this script on the next login

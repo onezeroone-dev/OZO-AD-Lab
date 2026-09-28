@@ -1,5 +1,3 @@
-#Requires -RunAsAdministrator
-
 # Start transcript
 Start-Transcript -Path "C:\ProgramData\OZO AD Lab\specialize-synchronous.log"
 # Install package provider
