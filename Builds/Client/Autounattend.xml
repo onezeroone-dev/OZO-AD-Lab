@@ -80,18 +80,18 @@
             </UserData>
         </component>
     </settings>
-    <settings pass="offlineServicing">
-        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <ComputerName>client</ComputerName>
-        </component>
-    </settings>
     <settings pass="specialize">
         <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <RunSynchronous>
                 <RunSynchronousCommand wcm:action="add">
+                    <Description>Copy OZO AD Lab files</Description>
                     <Order>1</Order>
-                    <Path>reg add &quot;HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff&quot; /f</Path>
-                    <Description>Disabling new network window</Description>
+                    <Path>robocopy.exe "D:\OZO AD Lab" "C:\ProgramData\OZO AD Lab" /E</Path>
+                </RunSynchronousCommand>
+                <RunSynchronousCommand wcm:action="add">
+                    <Description>Run Specialize phase script</Description>
+                    <Order>2</Order>
+                    <Path>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\specialize-synchronous.ps1"</Path>
                 </RunSynchronousCommand>
             </RunSynchronous>
         </component>
@@ -108,13 +108,14 @@
             <PublicProfile_EnableFirewall>false</PublicProfile_EnableFirewall>
         </component>
         <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ComputerName></ComputerName>
             <TimeZone>UTC</TimeZone>
         </component>
         <component name="Microsoft-Windows-UnattendedJoin" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <Identification>
                 <Credentials>
-                    <Domain>contoso.com</Domain>
-                    <Password>ADL@b$ecurePassw0rd</Password>
+                    <Domain>CONTOSO</Domain>
+                    <Password>OZOADL@b$ecurePassw0rd</Password>
                     <Username>Administrator</Username>
                 </Credentials>
                 <UnsecureJoin>false</UnsecureJoin>
@@ -143,7 +144,7 @@
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>QQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
+                            <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
                             <PlainText>false</PlainText>
                         </Password>
                         <Description>Built-in account for administering the computer/domain</Description>
@@ -153,7 +154,24 @@
                     </LocalAccount>
                 </LocalAccounts>
             </UserAccounts>
+            <FirstLogonCommands>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Run OOBESystem phase script</Description>
+                    <RequiresUserInput>false</RequiresUserInput>
+                    <Order>1</Order>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1"</CommandLine>
+                </SynchronousCommand>
+            </FirstLogonCommands>
+            <AutoLogon>
+                <Enabled>true</Enabled>
+                <LogonCount>1</LogonCount>
+                <Username>Administrator</Username>
+                <Password>
+                    <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
+                    <PlainText>false</PlainText>
+                </Password>
+            </AutoLogon>
         </component>
     </settings>
-    <cpi:offlineImage cpi:source="wim:c:/ad-lab/wim/windows%2011%20enterprise/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
+    <cpi:offlineImage cpi:source="wim:c:/ozo-ad-lab/wim/windows%20client/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
 </unattend>
