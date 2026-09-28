@@ -12,6 +12,8 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force
     # Install DSACL PowerShell module
     Install-Module -Name DSACL -Force
+    # Install ImportExcel
+    Install-Module ImportExcel -Force
     # Install NTFSSecurity PowerShell module
     Install-Module -Name NTFSSecurity -Force
     # Install OZO PowerShell module
@@ -20,6 +22,10 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     Install-Module -Name OZOAD -Force
     # Install OZOLogger PowerShell module
     Install-Module -Name OZOLogger -Force
+    # Install OZO AD Manage Delegations script
+    Install-Script ozo-ad-manage-delegations -Force
+    # Install OZO AD Manage Directory Objects script
+    Install-Script ozo-ad-manage-directory-objects -Force
     # Install OZO Windows Event Log Provider setup script
     Install-Script -Name ozo-windows-event-log-provider-setup -Force
     # Run OZO Windows Event Log Provider setup script
