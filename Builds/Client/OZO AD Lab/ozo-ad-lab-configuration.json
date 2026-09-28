@@ -1,4 +1,5 @@
 {
+    "ADComputers":[],
     "ADContacts":[
         {
             "FirstName":"William",
@@ -7,12 +8,6 @@
             "Path":"OU=External Contacts,DC=contoso,DC=com",
             "TelephoneNumber":"+1-206-555-6738"
         }
-    ],
-    "ADComputers":[
-        {
-            "ComputerName":"client",
-            "Path":"OU=IT,OU=Workstations,DC=contoso,DC=com"
-        }      
     ],
     "ADDefaultObjectsOUs":{
         "Groups":"OU=Domain Groups,DC=contoso,DC=com",
