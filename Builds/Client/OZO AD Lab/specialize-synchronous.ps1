@@ -18,7 +18,7 @@ Do {
 #>
 
 # Start transcript
-Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log"
+Start-Transcript -Path "C:\ProgramData\OZO AD Lab\specialize-synchronous.log"
 # Enable Remote Desktop
 Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "UserAuthentication" -Value 1
