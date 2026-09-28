@@ -81,8 +81,9 @@
         </component>
     </settings>
     <settings pass="specialize">
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <ComputerName></ComputerName>
+            <TimeZone>UTC</TimeZone>
         </component>
         <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <RunSynchronous>
@@ -110,9 +111,7 @@
             <PrivateProfile_EnableFirewall>false</PrivateProfile_EnableFirewall>
             <PublicProfile_EnableFirewall>false</PublicProfile_EnableFirewall>
         </component>
-        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <TimeZone>UTC</TimeZone>
-        </component>
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></component>
         <component name="Microsoft-Windows-UnattendedJoin" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <Identification>
                 <Credentials>
@@ -142,6 +141,20 @@
                 <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
                 <ProtectYourPC>1</ProtectYourPC>
             </OOBE>
+            <UserAccounts>
+                <LocalAccounts>
+                    <LocalAccount wcm:action="add">
+                        <Password>
+                            <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
+                            <PlainText>false</PlainText>
+                        </Password>
+                        <Description>Built-in account for administering the computer/domain</Description>
+                        <DisplayName>Administrator</DisplayName>
+                        <Group>Administrators</Group>
+                        <Name>Administrator</Name>
+                    </LocalAccount>
+                </LocalAccounts>
+            </UserAccounts>
         </component>
     </settings>
     <cpi:offlineImage cpi:source="wim:c:/ozo-ad-lab/wim/windows%20client/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
