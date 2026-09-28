@@ -119,7 +119,7 @@
             <Identification>
                 <Credentials>
                     <Domain>contoso.com</Domain>
-                    <Password>ADL@b$ecurePassw0rd</Password>
+                    <Password>OZOADL@b$ecurePassw0rd</Password>
                     <Username>Administrator</Username>
                 </Credentials>
                 <UnsecureJoin>false</UnsecureJoin>
