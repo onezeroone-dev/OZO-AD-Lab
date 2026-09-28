@@ -1,6 +1,6 @@
 #Requires -RunAsAdministrator
 
-# Add User32 class for finding windows by class name
+<# Add User32 class for finding windows by class name
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
@@ -15,6 +15,7 @@ public class User32 {
 Do {
     Start-Sleep -Seconds 1
 } Until ([User32]::FindWindow("Progman", $null) -eq [IntPtr]::Zero -And (Get-Process explorer -ErrorAction SilentlyContinue) -eq $true)
+#>
 
 # Start transcript
 Start-Transcript -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.log"
@@ -33,8 +34,10 @@ Install-Module OZOLogger -Force
 Install-Script ozo-windows-event-log-provider-setup -Force
 # Run OZO Windows Event Log Provider setup script
 & "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1"
+# Enable local Administrator account
+& cmd.exe /c net user Administrator /active:yes
 # Join to domain
-Add-Computer -DomainName "contoso.com" -Credential (New-Object System.Management.Automation.PSCredential("Administrator", (ConvertTo-SecureString 'OZOADL@b$ecurePassw0rd' -AsPlainText -Force)))
+# Add-Computer -DomainName "contoso.com" -Credential (New-Object System.Management.Automation.PSCredential("Administrator", (ConvertTo-SecureString 'OZOADL@b$ecurePassw0rd' -AsPlainText -Force)))
 # Stop transcript
 Stop-Transcript
 # Restart computer
