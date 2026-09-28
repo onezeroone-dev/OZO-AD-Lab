@@ -8,7 +8,9 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\W
 # Disable New Network Window
 & cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
 # Set Execution Policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force -ErrorAction SilentlyContinue
+# Install RSAT
+Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
 # Install OZO PowerShell module
 Install-Module OZO -Force
 # Install OZOLogger PowerShell module

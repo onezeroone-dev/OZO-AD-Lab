@@ -175,8 +175,8 @@
                 <LogonCount>2</LogonCount>
                 <Username>Administrator</Username>
                 <Password>
-                    <Value>OZOADL@b$ecurePassw0rd</Value>
-                    <PlainText>true</PlainText>
+                    <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
+                    <PlainText>false</PlainText>
                 </Password>
             </AutoLogon>
         </component>
