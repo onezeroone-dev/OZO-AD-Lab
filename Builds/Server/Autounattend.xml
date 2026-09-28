@@ -109,7 +109,7 @@
                     <Path>robocopy.exe "D:\OZO AD Lab" "C:\ProgramData\OZO AD Lab" /E</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Run Windows PE synchronous script</Description>
+                    <Description>Run Specialize phase script</Description>
                     <Order>2</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\specialize-synchronous.ps1"</Path>
                 </RunSynchronousCommand>
@@ -164,7 +164,7 @@
             </UserAccounts>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
-                    <Description>Run OOBESystem Synchronous Script</Description>
+                    <Description>Run OOBESystem phase script</Description>
                     <RequiresUserInput>false</RequiresUserInput>
                     <Order>1</Order>
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1"</CommandLine>

@@ -94,7 +94,7 @@
                     <Path>robocopy.exe "D:\OZO AD Lab" "C:\ProgramData\OZO AD Lab" /E</Path>
                 </RunSynchronousCommand>
                 <RunSynchronousCommand wcm:action="add">
-                    <Description>Run Windows PE synchronous script</Description>
+                    <Description>Run Specialize phase synchronous script</Description>
                     <Order>2</Order>
                     <Path>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\specialize-synchronous.ps1"</Path>
                 </RunSynchronousCommand>
