@@ -72,7 +72,7 @@
         },
         {
             "Description":"Delegate full control of computers in the Servers/Administration OU to the Administration Servers Delegates group",
-            "Identities":["Admninistration Servers Delegates"],
+            "Identities":["Administration Servers Delegates"],
             "Permissions":["FullControlComputers"],
             "OUs":[
                 "OU=Administration,OU=Servers,DC=contoso,DC=com"
@@ -112,7 +112,7 @@
         },
         {
             "Description":"Delegate full control of computers in the Servers/Development OU to the Development Servers Delegates group",
-            "Identities":["Admninistration Servers Delegates"],
+            "Identities":["Administration Servers Delegates"],
             "Permissions":["FullControlComputers"],
             "OUs":[
                 "OU=Development,OU=Servers,DC=contoso,DC=com"
@@ -152,7 +152,7 @@
         },
         {
             "Description":"Delegate full control of computers in the Servers/Finance OU to the Finance Servers Delegates group",
-            "Identities":["Admninistration Servers Delegates"],
+            "Identities":["Administration Servers Delegates"],
             "Permissions":["FullControlComputers"],
             "OUs":[
                 "OU=Finance,OU=Servers,DC=contoso,DC=com"
@@ -192,7 +192,7 @@
         },
         {
             "Description":"Delegate full control of computers in the Servers/Human Resources OU to the Human Resources Servers Delegates group",
-            "Identities":["Admninistration Servers Delegates"],
+            "Identities":["Administration Servers Delegates"],
             "Permissions":["FullControlComputers"],
             "OUs":[
                 "OU=Human Resources,OU=Servers,DC=contoso,DC=com"
@@ -232,7 +232,7 @@
         },
         {
             "Description":"Delegate full control of computers in the Servers/IT OU to the IT Servers Delegates group",
-            "Identities":["Admninistration Servers Delegates"],
+            "Identities":["Administration Servers Delegates"],
             "Permissions":["FullControlComputers"],
             "OUs":[
                 "OU=IT,OU=Servers,DC=contoso,DC=com"
@@ -272,7 +272,7 @@
         },
         {
             "Description":"Delegate full control of computers in the Servers/Marketing OU to the Marketing Servers Delegates group",
-            "Identities":["Admninistration Servers Delegates"],
+            "Identities":["Administration Servers Delegates"],
             "Permissions":["FullControlComputers"],
             "OUs":[
                 "OU=Marketing,OU=Servers,DC=contoso,DC=com"
@@ -312,7 +312,7 @@
         },
         {
             "Description":"Delegate full control of computers in the Servers/Operations OU to the Operations Servers Delegates group",
-            "Identities":["Admninistration Servers Delegates"],
+            "Identities":["Administration Servers Delegates"],
             "Permissions":["FullControlComputers"],
             "OUs":[
                 "OU=Operations,OU=Servers,DC=contoso,DC=com"
