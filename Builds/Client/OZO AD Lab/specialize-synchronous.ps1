@@ -8,5 +8,3 @@ Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 & cmd.exe /c net user Administrator /active:yes
 # Stop transcript
 Stop-Transcript
-# Restart computer
-Restart-Computer -Force
