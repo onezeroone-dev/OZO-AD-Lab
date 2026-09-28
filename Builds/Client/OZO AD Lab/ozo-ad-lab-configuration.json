@@ -19,13 +19,347 @@
         "Users":"OU=Domain Users,DC=contoso,DC=com"
     },
     "ADOUDelegations":[
-
+        {
+            "Description":"Delegate full control of all groups in the Groups OU to the All Groups Delegates group",
+            "Identities":["All Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of all users in the People OU to the All People Delegates group",
+            "Identities":["All People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of all computers in the Servers OU to the All Servers Delegates group",
+            "Identities":["All Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of all users in the Service Accounts OU to the All Service Accounts Delegates group",
+            "Identities":["All Service Accounts Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Service Accounts,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of all computers in the Workstations OU to the All Workstations Delegates group",
+            "Identities":["All Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of groups in the the Groups/Administration OU to the Administration Groups Delegates group",
+            "Identities":["Administration Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=Administration,OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the People/Administration OU the the Administration People Delegates group",
+            "Identities":["Administration People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Administration,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Servers/Administration OU to the Administration Servers Delegates group",
+            "Identities":["Admninistration Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Administration,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the Service Accounts/Administration OU the the Administration Service Accounts Delegates group",
+            "Identities":["Administration People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Administration,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Workstations/Administration OU to the Administration Workstations Delegates group",
+            "Identities":["Administration Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Administration,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of groups in the the Groups/Development OU to the Development Groups Delegates group",
+            "Identities":["Development Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=Development,OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the People/Development OU the the Development People Delegates group",
+            "Identities":["Development People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Development,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Servers/Development OU to the Development Servers Delegates group",
+            "Identities":["Admninistration Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Development,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the Service Accounts/Development OU the the Development Service Accounts Delegates group",
+            "Identities":["Development People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Development,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Workstations/Development OU to the Development Workstations Delegates group",
+            "Identities":["Development Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Development,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of groups in the the Groups/Finance OU to the Finance Groups Delegates group",
+            "Identities":["Finance Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=Finance,OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the People/Finance OU the the Finance People Delegates group",
+            "Identities":["Finance People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Finance,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Servers/Finance OU to the Finance Servers Delegates group",
+            "Identities":["Admninistration Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Finance,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the Service Accounts/Finance OU the the Finance Service Accounts Delegates group",
+            "Identities":["Finance People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Finance,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Workstations/Finance OU to the Finance Workstations Delegates group",
+            "Identities":["Finance Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Finance,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of groups in the the Groups/Human Resources OU to the Human Resources Groups Delegates group",
+            "Identities":["Human Resources Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=Human Resources,OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the People/Human Resources OU the the Human Resources People Delegates group",
+            "Identities":["Human Resources People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Human Resources,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Servers/Human Resources OU to the Human Resources Servers Delegates group",
+            "Identities":["Admninistration Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Human Resources,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the Service Accounts/Human Resources OU the the Human Resources Service Accounts Delegates group",
+            "Identities":["Human Resources People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Human Resources,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Workstations/Human Resources OU to the Human Resources Workstations Delegates group",
+            "Identities":["Human Resources Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Human Resources,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of groups in the the Groups/IT OU to the IT Groups Delegates group",
+            "Identities":["IT Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=IT,OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the People/IT OU the the IT People Delegates group",
+            "Identities":["IT People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=IT,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Servers/IT OU to the IT Servers Delegates group",
+            "Identities":["Admninistration Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=IT,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the Service Accounts/IT OU the the IT Service Accounts Delegates group",
+            "Identities":["IT People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=IT,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Workstations/IT OU to the IT Workstations Delegates group",
+            "Identities":["IT Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=IT,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of groups in the the Groups/Marketing OU to the Marketing Groups Delegates group",
+            "Identities":["Marketing Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=Marketing,OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the People/Marketing OU the the Marketing People Delegates group",
+            "Identities":["Marketing People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Marketing,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Servers/Marketing OU to the Marketing Servers Delegates group",
+            "Identities":["Admninistration Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Marketing,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the Service Accounts/Marketing OU the the Marketing Service Accounts Delegates group",
+            "Identities":["Marketing People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Marketing,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Workstations/Marketing OU to the Marketing Workstations Delegates group",
+            "Identities":["Marketing Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Marketing,OU=Workstations,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of groups in the the Groups/Operations OU to the Operations Groups Delegates group",
+            "Identities":["Operations Groups Delegates"],
+            "Permissions":["FullControlGroups"],
+            "OUs":[
+                "OU=Operations,OU=Groups,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the People/Operations OU the the Operations People Delegates group",
+            "Identities":["Operations People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Operations,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Servers/Operations OU to the Operations Servers Delegates group",
+            "Identities":["Admninistration Servers Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Operations,OU=Servers,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of users in the Service Accounts/Operations OU the the Operations Service Accounts Delegates group",
+            "Identities":["Operations People Delegates"],
+            "Permissions":["FullControlUsers"],
+            "OUs":[
+                "OU=Operations,OU=People,DC=contoso,DC=com"
+            ]
+        },
+        {
+            "Description":"Delegate full control of computers in the Workstations/Operations OU to the Operations Workstations Delegates group",
+            "Identities":["Operations Workstations Delegates"],
+            "Permissions":["FullControlComputers"],
+            "OUs":[
+                "OU=Operations,OU=Workstations,DC=contoso,DC=com"
+            ]
+        }
     ],
     "ADDFSNRootPermissions":[
-
+        {
+            "Description":"Delegate permission to the Shares namespace",
+            "DFSNRoots":["\\\\contoso.com\\Shares"],
+            "Identities":["All DFS Delegates"]
+        }
     ],
     "ADDFSNFolderPermissions":[
-
+        {
+            "Description":"Delegate permission to the Shares\\All folder",
+            "DFSNFolders":["\\\\contoso.com\\Shares"],
+            "Identities":["All DFS Delegates"]
+        }
+    ],
+    "ADDFSRPermissions":[
+        {
+            "Description":"Delegate permission to ContosoRG replication group",
+            "DFSRGroups":["ContosoRG"],
+            "Identities":["All DFS Delegates"]
+        }
     ],
     "ADGroups":[
         {
@@ -613,6 +947,111 @@
                 "Operations Service Accounts Delegates",
                 "Operations Workstations Delegates"
             ]
+        }
+    ],
+    "ADGPOPermissions":[
+        {
+            "Description":"Grant GPO Edit, Delete, and Modify Security on all GPOs to the All GPO Delegates group",
+            "GPONames":[
+                "Administration People Settings",
+                "Administration Servers Settings",
+                "Administration Workstations Settings",
+                "All People Settings",
+                "All Servers Settings",
+                "All Workstations Settings",
+                "Default Domain Controllers Policy",
+                "Default Domain Policy",
+                "Development People Settings",
+                "Development Servers Settings",
+                "Development Workstations Settings",
+                "Finance People Settings",
+                "Finance Servers Settings",
+                "Finance Workstations Settings",
+                "Human Resources People Settings",
+                "Human Resources Servers Settings",
+                "Human Resources Workstations Settings",
+                "IT People Settings",
+                "IT Servers Settings",
+                "IT Workstations Settings",
+                "Marketing People Settings",
+                "Marketing Servers Settings",
+                "Marketing Workstations Settings",
+                "Operations People Settings",
+                "Operations Servers Settings",
+                "Operations Workstations Settings"
+            ],
+            "GroupNames":["All GPO Delegates"],
+            "Permissions":["GpoEditDeleteModifySecurity"]
+        },
+        {
+            "Description":"Grant GPO Edit on Administration GPOs to the Administration GPO Delegates group",
+            "GPONames":[
+                "Administration People Settings",
+                "Administration Servers Settings",
+                "Administration Workstations Settings"
+            ],
+            "GroupNames":["Administration GPO Delegates"],
+            "Permissions":["GpoEdit"]
+        },
+        {
+            "Description":"Grant GPO Edit on Development GPOs to the Development GPO Delegates group",
+            "GPONames":[
+                "Development People Settings",
+                "Development Servers Settings",
+                "Development Workstations Settings"
+            ],
+            "GroupNames":["Development GPO Delegates"],
+            "Permissions":["GpoEdit"]
+        },
+        {
+            "Description":"Grant GPO Edit on Finance GPOs to the Finance GPO Delegates group",
+            "GPONames":[
+                "Finance People Settings",
+                "Finance Servers Settings",
+                "Finance Workstations Settings"
+            ],
+            "GroupNames":["Finance GPO Delegates"],
+            "Permissions":["GpoEdit"]
+        },
+        {
+            "Description":"Grant GPO Edit on Human Resources GPOs to the Human Resources GPO Delegates group",
+            "GPONames":[
+                "Human Resources People Settings",
+                "Human Resources Servers Settings",
+                "Human Resources Workstations Settings"
+            ],
+            "GroupNames":["Human Resources GPO Delegates"],
+            "Permissions":["GpoEdit"]
+        },
+        {
+            "Description":"Grant GPO Edit on IT GPOs to the IT GPO Delegates group",
+            "GPONames":[
+                "IT People Settings",
+                "IT Servers Settings",
+                "IT Workstations Settings"
+            ],
+            "GroupNames":["IT GPO Delegates"],
+            "Permissions":["GpoEdit"]
+        },
+        {
+            "Description":"Grant GPO Edit on Marketing GPOs to the Marketing GPO Delegates group",
+            "GPONames":[
+                "Marketing People Settings",
+                "Marketing Servers Settings",
+                "Marketing Workstations Settings"
+            ],
+            "GroupNames":["Marketing GPO Delegates"],
+            "Permissions":["GpoEdit"]
+        },
+        {
+            "Description":"Grant GPO Edit on Operations GPOs to the Operations GPO Delegates group",
+            "GPONames":[
+                "Operations People Settings",
+                "Operations Servers Settings",
+                "Operations Workstations Settings"
+            ],
+            "GroupNames":["Operations GPO Delegates"],
+            "Permissions":["GpoEdit"]
         }
     ],
     "ADGroupPolicyObjects":[
