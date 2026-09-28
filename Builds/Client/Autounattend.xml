@@ -162,15 +162,6 @@
                     <CommandLine>powershell.exe -ExecutionPolicy Bypass -File "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.ps1"</CommandLine>
                 </SynchronousCommand>
             </FirstLogonCommands>
-            <AutoLogon>
-                <Enabled>true</Enabled>
-                <LogonCount>1</LogonCount>
-                <Username>Administrator</Username>
-                <Password>
-                    <Value>TwBaAE8AQQBEAEwAQABiACQAZQBjAHUAcgBlAFAAYQBzAHMAdwAwAHIAZABQAGEAcwBzAHcAbwByAGQA</Value>
-                    <PlainText>false</PlainText>
-                </Password>
-            </AutoLogon>
         </component>
     </settings>
     <cpi:offlineImage cpi:source="wim:c:/ozo-ad-lab/wim/windows%20client/install.wim#Windows 11 Enterprise Evaluation" xmlns:cpi="urn:schemas-microsoft-com:cpi" />
