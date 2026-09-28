@@ -34,8 +34,6 @@ Install-Module OZOLogger -Force
 Install-Script ozo-windows-event-log-provider-setup -Force
 # Run OZO Windows Event Log Provider setup script
 & "C:\Program Files\WindowsPowerShell\Scripts\ozo-windows-event-log-provider-setup.ps1"
-# Enable local Administrator account
-& cmd.exe /c net user Administrator /active:yes
 # Join to domain
 # Add-Computer -DomainName "contoso.com" -Credential (New-Object System.Management.Automation.PSCredential("Administrator", (ConvertTo-SecureString 'OZOADL@b$ecurePassw0rd' -AsPlainText -Force)))
 # Stop transcript
