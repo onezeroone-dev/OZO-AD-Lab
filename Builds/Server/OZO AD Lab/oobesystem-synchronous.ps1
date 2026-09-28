@@ -86,6 +86,8 @@ If ([Boolean](Test-Path -Path "C:\ProgramData\OZO AD Lab\oobesystem-synchronous.
     Add-NTFSAccess -Path "C:\Share" -Account "CONTOSO\Domain Admins" -AccessRights "FullControl" -AccessType "Allow" -AppliesTo "ThisFolderSubfoldersAndFiles"
     # Create the SMB share
     New-SmbShare -FolderEnumerationMode "AccessBased" -FullAccess "NT AUTHORITY\Authenticated Users" -Name "Share" -Path "C:\Share"
+    # Add a new DFSNRoot
+    New-DfsnRoot -TargetPath "\\dc.contoso.com\Share" -Type "DomainV2" -Path "\\contoso.com\Share"
     # Unregister the second boot scheduled task
     Unregister-ScheduledTask -TaskName "OZO AD Lab OOBE System Second Boot" -Confirm:$false
     # Stop transcript

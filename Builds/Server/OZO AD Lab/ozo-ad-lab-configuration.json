@@ -337,25 +337,13 @@
     ],
     "ADDFSNRootPermissions":[
         {
-            "Description":"Delegate permission to the Shares namespace",
-            "DFSNRoots":["\\\\contoso.com\\Shares"],
+            "Description":"Delegate permission to the Share namespace",
+            "DFSNRoots":["\\\\contoso.com\\Share"],
             "Identities":["All DFS Delegates"]
         }
     ],
-    "ADDFSNFolderPermissions":[
-        {
-            "Description":"Delegate permission to the Shares\\All folder",
-            "DFSNFolders":["\\\\contoso.com\\Shares"],
-            "Identities":["All DFS Delegates"]
-        }
-    ],
-    "ADDFSRPermissions":[
-        {
-            "Description":"Delegate permission to ContosoRG replication group",
-            "DFSRGroups":["ContosoRG"],
-            "Identities":["All DFS Delegates"]
-        }
-    ],
+    "ADDFSNFolderPermissions":[],
+    "ADDFSRPermissions":[],
     "ADGroups":[
         {
             "Name":"All DFS Delegates",
