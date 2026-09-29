@@ -9,10 +9,6 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\W
 & cmd.exe /c reg add "HKLM\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" /f
 # Install OZO PowerShell module
 Install-Module OZO -Force
-# Install OZOAD PowerShell module
-Install-Module OZOAD -Force
-# Install OZOFiles PowerShell module
-Install-Module OZOFiles -Force
 # Install OZOLogger PowerShell module
 Install-Module OZOLogger -Force
 # Install OZO Windows Event Log Provider setup script
